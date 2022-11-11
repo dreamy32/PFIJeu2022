@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 59050372e5b02694c8039339e4e0340c
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Misery
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 644d6d2c0b2f40745b02cf7fad451808, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
