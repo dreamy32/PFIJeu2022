@@ -6,24 +6,28 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Physics")]
-    [SerializeField] float speed = 20f;
+    [SerializeField] float walkSpeed = 3f;
+    [SerializeField] float sprintSpeed = 6f;
     [SerializeField] float gravity = -9.81f; // The numerical value for the acceleration of gravity
     [SerializeField] float jumpForce = 10f;
+
 
     [Header("Sounds")]
     [SerializeField] SoundManager soundManager;
     [SerializeField] AudioClip footsteps;
+    AudioSource soundSource;
 
     [Header("Crouching")]
     [SerializeField] float crouchingHeight = 0.5f;
     [SerializeField] Transform topRaycastLocation;
 
 
-
+    private float speed;
     private float defaultSpeed;
     private float defaultGravity;
     private float defaultHeight;
 
+    bool isRunning = false;
     bool isGrounded = true;
     bool isMoving = false;
     private bool isCrouching = false;
@@ -36,7 +40,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
-       
+        soundSource = GetComponent<AudioSource>();
+        speed = walkSpeed;
         controller = GetComponent<CharacterController>();
         defaultHeight = controller.height;
         eyes = transform.GetChild(0).gameObject;
@@ -52,16 +57,18 @@ public class PlayerMovement : MonoBehaviour
     {
         if (input != new Vector2(0, 0))
         {
+            soundSource.pitch = isRunning ? 1.18f : 1;
             isMoving = true;
             camAnim.SetBool("isWalking", true);
-            soundManager.PlaySound(footsteps);
+            soundSource.enabled = true;
+            
         } 
         else
         {
             
             camAnim.SetBool("isWalking", false);
             camAnim.SetBool("isIdle", true);
-            soundManager.StopSound(footsteps);
+            soundSource.enabled = false ;
         }
           
 
@@ -77,6 +84,14 @@ public class PlayerMovement : MonoBehaviour
 
         // The player will jump or fall, depending on the value of the velocity
         controller.Move(velocity * Time.deltaTime);
+    }
+    public void Sprint(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+            isRunning = true;
+        else if (ctx.canceled)
+            isRunning = false;
+        speed = isRunning ? sprintSpeed : walkSpeed;
     }
 
     // An event that is invoked when pressing space
