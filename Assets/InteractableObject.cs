@@ -4,19 +4,25 @@ using UnityEngine.Serialization;
 [RequireComponent(typeof(SphereCollider))]
 public abstract class InteractableObject : MonoBehaviour
 {
-    private SphereCollider _triggerCollider;
-
     [Header(
         "You must set the tag 'Interactable' to the parent or a child of it.\n\n" +
         "An interactable object looks for 'Outline' components\nin itself and/or his children." +
         "\n*Not Required*")]
+    //
+    [SerializeField, Tooltip("If none, nothing will be display.")]
+    private Sprite infoIcon;
+
     [SerializeField, FormerlySerializedAs("layerMask")]
     private LayerMask triggeringMask;
 
+    //
     private bool _canInteract;
     private bool _isTriggered;
     private RaycastHit _raycastHit;
 
+    private SphereCollider _triggerCollider;
+
+    //
     private Outline[] _outlines; //Peut avoir plus que un outline
 
     //
@@ -50,7 +56,7 @@ public abstract class InteractableObject : MonoBehaviour
                 //On s'assure que les paramètres et outlines sont remis à false/désactiver
                 _isTriggered = false;
                 _canInteract = false;
-                ToggleOutlines(false);
+                ToggleInfo(false);
             }
         };
     }
@@ -113,16 +119,15 @@ public abstract class InteractableObject : MonoBehaviour
             if (_isTriggered)
             {
                 var camTransform = Camera.main.transform;
-
                 if (Physics.Raycast(camTransform.position, camTransform.transform.forward, out _raycastHit))
                 {
                     _canInteract = _raycastHit.collider.CompareTag(InteractionManager.InteractionTag);
-                    ToggleOutlines(_canInteract);
+                    ToggleInfo(_canInteract);
                 }
                 else
                 {
                     _canInteract = false;
-                    ToggleOutlines(false);
+                    ToggleInfo(false);
                 }
             }
         }
@@ -140,13 +145,22 @@ public abstract class InteractableObject : MonoBehaviour
         }
     }
 
-    private void ToggleOutlines(bool state)
+    private void ToggleInfo(bool state)
     {
+        //Outlines
         foreach (var outline in _outlines)
         {
             if (outline.enabled != state)
                 outline.enabled = state;
         }
+
+        //InfoIcon
+        if (infoIcon != null && InteractionManager.IconPlaceholder != null)
+        {
+            InteractionManager.IconPlaceholder.sprite = infoIcon;
+        }
+
+        InteractionManager.IconPlaceholder.enabled = state;
     }
 
     protected abstract void OnInteract();
