@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 847703704985079274}
   - component: {fileID: 847703704985079275}
   - component: {fileID: 847703704985079277}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,11 +132,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69d209a4bcb5ea648b734daff11f1fef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  walkSpeed: 3
+  sprintSpeed: 6
   gravity: -9.81
   jumpForce: 10
   soundManager: {fileID: 0}
   footsteps: {fileID: 0}
+  crouchingHeight: 0.5
+  topRaycastLocation: {fileID: 0}
 --- !u!114 &847703704985079277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,7 +165,7 @@ GameObject:
   - component: {fileID: 847703705491019034}
   - component: {fileID: 847703705491019035}
   - component: {fileID: 847703705491019038}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -266,7 +269,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3490265958816913316}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}

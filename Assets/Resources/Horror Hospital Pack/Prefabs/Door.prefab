@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 6519934}
   - component: {fileID: 827981445268382514}
   - component: {fileID: 1864280202224858523}
+  - component: {fileID: 3699607547926972039}
   m_Layer: 0
   m_Name: Door
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 65
@@ -4349,6 +4350,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!135 &3699607547926972039
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116412}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 4.58
+  m_Center: {x: 1.3070081, y: 0.0000032186508, z: 0.009116933}
 --- !u!1 &3216303942629817090
 GameObject:
   m_ObjectHideFlags: 0
@@ -4361,6 +4375,7 @@ GameObject:
   - component: {fileID: 3931784455766017946}
   - component: {fileID: 620252513934714860}
   - component: {fileID: 4518296554584771676}
+  - component: {fileID: 7001239770313328113}
   m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
@@ -7391,6 +7406,20 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!64 &7001239770313328113
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3216303942629817090}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &4966097913379437696
 GameObject:
   m_ObjectHideFlags: 0
