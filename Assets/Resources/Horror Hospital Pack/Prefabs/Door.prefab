@@ -15,9 +15,11 @@ GameObject:
   - component: {fileID: 827981445268382514}
   - component: {fileID: 1864280202224858523}
   - component: {fileID: 3699607547926972039}
+  - component: {fileID: 2118134034133720511}
+  - component: {fileID: 6168189468082568184}
   m_Layer: 0
   m_Name: Door
-  m_TagString: Interactable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 65
@@ -4363,6 +4365,36 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 4.58
   m_Center: {x: 1.3070081, y: 0.0000032186508, z: 0.009116933}
+--- !u!114 &2118134034133720511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3b75f8e7ec2a824ca44c4e5716e7158, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioHandle: {fileID: 4561579598725239949}
+  audioDoor: {fileID: 6015870476210885927}
+--- !u!114 &6168189468082568184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbad8f74f5195144d8029cd53734af80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infoIcon: {fileID: 0}
+  triggeringMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &3216303942629817090
 GameObject:
   m_ObjectHideFlags: 0
@@ -4376,9 +4408,10 @@ GameObject:
   - component: {fileID: 620252513934714860}
   - component: {fileID: 4518296554584771676}
   - component: {fileID: 7001239770313328113}
+  - component: {fileID: 8797360794310578925}
   m_Layer: 0
   m_Name: Handle
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 65
@@ -7420,6 +7453,24 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &8797360794310578925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3216303942629817090}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &4966097913379437696
 GameObject:
   m_ObjectHideFlags: 0
