@@ -208,10 +208,14 @@ GameObject:
   - component: {fileID: 3600778639858042733}
   - component: {fileID: 3600778639858042728}
   - component: {fileID: 3600778639858042735}
-  - component: {fileID: 3600778639858042734}
+  - component: {fileID: 6001853202593067346}
+  - component: {fileID: 6783430116591447090}
+  - component: {fileID: 4227437472020241071}
+  - component: {fileID: 6208204996464784772}
+  - component: {fileID: 5362487370441600634}
   m_Layer: 0
   m_Name: Locker
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -282,8 +286,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3600778639858042734
-MeshCollider:
+--- !u!65 &6001853202593067346
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -292,10 +296,64 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: f8a4903bf11aefb4f8358b11034c57cc, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.7054806, y: 1.8353457, z: 0.5923002}
+  m_Center: {x: -7.924217e-15, y: 0.9176729, z: 0.000008508565}
+--- !u!135 &6783430116591447090
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3600778638285038032}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.2
+  m_Center: {x: 0, y: 1, z: 0.64}
+--- !u!114 &4227437472020241071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3600778638285038032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff4b96f1ac80e6b448d2a17ba4b82153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hidingCam: {fileID: 3600778638262170154}
+  sensitivity: 50
+  minAngle: 0
+  maxAngle: 0
+--- !u!114 &6208204996464784772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3600778638285038032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34946fb0111603e43a3b42f69329803d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infoIcon: {fileID: 21300000, guid: 2251011a5d10c124ea35f86c11f5d53b, type: 3}
+  triggeringMask:
+    serializedVersion: 2
+    m_Bits: 64
+  hidingCam: {fileID: 3600778638262170154}
+  hideCanvas: {fileID: 0}
+--- !u!81 &5362487370441600634
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3600778638285038032}
+  m_Enabled: 1
 --- !u!1 &3600778639368703616
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,11 +365,10 @@ GameObject:
   - component: {fileID: 3600778639368703630}
   - component: {fileID: 3600778639368703625}
   - component: {fileID: 3600778639368703624}
-  - component: {fileID: 3600778639368703631}
-  - component: {fileID: 3600778639368703629}
+  - component: {fileID: 1255644110050360173}
   m_Layer: 3
   m_Name: door
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -382,7 +439,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3600778639368703631
+--- !u!65 &1255644110050360173
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -393,21 +450,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6223224, y: 1.7774656, z: 0.022210777}
-  m_Center: {x: 0.30766246, y: 0.014849365, z: 0.0014266968}
---- !u!114 &3600778639368703629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3600778639368703616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff4b96f1ac80e6b448d2a17ba4b82153, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hidingCam: {fileID: 3600778638262170154}
-  sensitivity: 50
-  minAngle: 0
-  maxAngle: 0
+  m_Size: {x: 0.6223225, y: 1.7774656, z: 0.022210782}
+  m_Center: {x: 0.30766252, y: 0.014849365, z: 0.0014266971}

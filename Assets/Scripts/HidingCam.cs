@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-[RequireComponent(typeof(HideOnInteract))]
 public class HidingCam : MonoBehaviour
 {
     [SerializeField] Camera hidingCam;
