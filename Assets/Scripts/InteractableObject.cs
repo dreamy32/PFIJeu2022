@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -18,7 +20,7 @@ public abstract class InteractableObject : MonoBehaviour
     //
     private bool _canInteract;
     private bool _isTriggered;
-    private RaycastHit _raycastHit;
+    protected RaycastHit RaycastHit;
 
     private SphereCollider _triggerCollider;
 
@@ -28,7 +30,7 @@ public abstract class InteractableObject : MonoBehaviour
     //
     protected bool SingleUsage = false;
     private bool _hasBeenUsed = false;
-
+    
     protected virtual void Awake()
     {
         //Trigger
@@ -59,6 +61,11 @@ public abstract class InteractableObject : MonoBehaviour
                 ToggleInfo(false);
             }
         };
+    }
+
+    protected void Start()
+    {
+        ToggleInfo(false);
     }
 
     protected virtual void OnTriggerEnter(Collider c)
@@ -118,10 +125,12 @@ public abstract class InteractableObject : MonoBehaviour
         {
             if (_isTriggered)
             {
+                if (Camera.main == null) //Temp fix
+                    return;
                 var camTransform = Camera.main.transform;
-                if (Physics.Raycast(camTransform.position, camTransform.transform.forward, out _raycastHit))
+                if (Physics.Raycast(camTransform.position, camTransform.transform.forward, out RaycastHit))
                 {
-                    _canInteract = _raycastHit.collider.CompareTag(InteractionManager.InteractionTag);
+                    _canInteract = RaycastHit.collider.CompareTag(InteractionManager.InteractionTag);
                     ToggleInfo(_canInteract);
                 }
                 else
@@ -135,10 +144,12 @@ public abstract class InteractableObject : MonoBehaviour
 
     private void Interact()
     {
+        if (Camera.main == null)
+            return; //temp fix
         var camTransform = Camera.main.transform;
-        if (_canInteract && Physics.Raycast(camTransform.position, camTransform.forward, out _raycastHit))
+        if (_canInteract && Physics.Raycast(camTransform.position, camTransform.forward, out RaycastHit))
         {
-            if (_raycastHit.collider.tag.Equals(InteractionManager.InteractionTag))
+            if (RaycastHit.collider.tag.Equals(InteractionManager.InteractionTag))
             {
                 OnInteract();
             }

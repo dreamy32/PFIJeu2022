@@ -44,24 +44,22 @@ public class HidingComponent : MonoBehaviour
 
     private void Hide(GameObject hidingSpot)
     {
-        hidingCam = hidingSpot.GetComponent<HidingCam>().Camera;
-        gameObject.SetActive(false);
-        hidingCam.enabled = true;
-        playerCam.enabled = false;
-        canvas.enabled = true;
-        hidePrompt.enabled = false;
+        // hidingCam = hidingSpot.GetComponent<HidingCam>().Camera;
+        // gameObject.SetActive(false);
+        // hidingCam.enabled = true;
+        // playerCam.enabled = false;
+        // canvas.enabled = true;
+        // hidePrompt.enabled = false;
     }
 
     // invoked when pressing Space
     public void GetOut()
     {
-        hidingCam = hidingSpot.GetComponent<HidingCam>().Camera;
-        hidingCam.enabled = false;
-        playerCam.enabled = true;
-        gameObject.SetActive(true);
-        canvas.enabled = false;
+        // hidingCam = hidingSpot.GetComponent<HidingCam>().Camera;
+        // hidingCam.enabled = false;
+        // playerCam.enabled = true;
+        // gameObject.SetActive(true);
+        // canvas.enabled = false;
     
     }
-
-
 }
