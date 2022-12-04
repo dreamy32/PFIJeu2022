@@ -4081,7 +4081,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1355286453, guid: 5713ed639ef83f945b71f3b92342d629, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3098933695633324461, guid: 5713ed639ef83f945b71f3b92342d629, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3871122372760336420, guid: 5713ed639ef83f945b71f3b92342d629, type: 3}
       propertyPath: hideCanvas
