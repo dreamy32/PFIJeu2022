@@ -23,6 +23,7 @@ public class LightComponent : MonoBehaviour
 
     private void Awake()
     {
+        //??= est l'équivalent de faire une condition pour 'checker' si c'est null avant d'instancier l'objet 
         instances ??= new List<LightComponent>();
         instances.Add(this);
         //
@@ -79,6 +80,7 @@ public class LightComponent : MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
         StopCoroutine(_flickerRoutine);
+        //Équivaut à endState != null ? endState.Value : _stateBeforeFlicking
         Toggle(endState ?? _stateBeforeFlicking);
     }
     
