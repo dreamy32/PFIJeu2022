@@ -2586,9 +2586,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 132843508}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0080d32c47929f43a798e2d09ded49c, type: 3}
+  m_Script: {fileID: 11500000, guid: 62bfd6ef636d87c4c8f35eba7d42e5ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flashlightSpawns: []
+  flashlight: {fileID: 0}
 --- !u!1 &135273799
 GameObject:
   m_ObjectHideFlags: 0
@@ -3811,7 +3813,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh27642
+  m_Name: pb_Mesh38104
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8224,7 +8226,7 @@ MonoBehaviour:
     m_ActionName: OnGround/Look[/Mouse/delta]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 132843510}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: InteractionManager, Assembly-CSharp
         m_MethodName: Interact
         m_Mode: 0
@@ -13863,7 +13865,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh26672
+  m_Name: pb_Mesh37134
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -23442,6 +23444,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 1
+  materialOn: {fileID: 0}
+  materialOff: {fileID: 0}
+  flickOnAwake: 0
+  time: 0
+  flickDuration: 0
 --- !u!1 &1292467664
 GameObject:
   m_ObjectHideFlags: 0
@@ -31747,7 +31754,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4402eaa9cc8d9284092aec1afe4966d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 1
+  state: 0
+  materialOn: {fileID: 0}
+  materialOff: {fileID: 0}
+  flickOnAwake: 1
+  time: 0.2
+  flickDuration: 1
 --- !u!1001 &1686378234
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34397,6 +34409,10 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6168189468082568184, guid: 9c25864566bc2a7489bef25ecb47dd6c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7001239770313328113, guid: 9c25864566bc2a7489bef25ecb47dd6c, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -34632,14 +34648,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 865805808}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbad8f74f5195144d8029cd53734af80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactableAttributes:
-    icon: {fileID: 0}
-    description: 
+  infoIcon: {fileID: 0}
   triggeringMask:
     serializedVersion: 2
     m_Bits: 64
