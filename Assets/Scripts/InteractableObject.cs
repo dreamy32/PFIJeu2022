@@ -28,7 +28,7 @@ public abstract class InteractableObject : MonoBehaviour
     //
     protected bool SingleUsage = false;
     private bool _hasBeenUsed = false;
-    
+
     protected virtual void Awake()
     {
         //Trigger
@@ -126,9 +126,11 @@ public abstract class InteractableObject : MonoBehaviour
                 if (Camera.main == null) //Temp fix
                     return;
                 var camTransform = Camera.main.transform;
-                if (Physics.Raycast(camTransform.position, camTransform.forward, out var hit, _triggerCollider.radius))
+                if (Physics.Raycast(camTransform.position, camTransform.forward, out var hit,
+                        2f))
                 {
-                    _canInteract = hit.collider.CompareTag(InteractionManager.InteractionTag) && hit.collider != _triggerCollider;
+                    _canInteract = hit.collider.CompareTag(InteractionManager.InteractionTag) &&
+                                   hit.collider != _triggerCollider;
                     ToggleInfo(_canInteract);
                 }
                 else
@@ -145,7 +147,8 @@ public abstract class InteractableObject : MonoBehaviour
         if (Camera.main == null)
             return; //temp fix
         var camTransform = Camera.main.transform;
-        if (_canInteract && Physics.Raycast(camTransform.position, camTransform.forward, out RaycastHit, _triggerCollider.radius))
+        if (_canInteract && Physics.Raycast(camTransform.position, camTransform.forward, out RaycastHit,
+                _triggerCollider.radius))
         {
             if (RaycastHit.collider.CompareTag(InteractionManager.InteractionTag))
             {
