@@ -47,6 +47,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Interactable
       objectReference: {fileID: 0}
+    - target: {fileID: 1754945289371740, guid: df2f14ece3a3a0847aad4f1407b39c50, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1936011742919702, guid: df2f14ece3a3a0847aad4f1407b39c50, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4856336461430574, guid: df2f14ece3a3a0847aad4f1407b39c50, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -118,8 +126,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5041701
-  m_Center: {x: 0.64148444, y: 1.5303104, z: -0.033539534}
+  m_Radius: 0.8137179
+  m_Center: {x: 0.64122385, y: 1.536842, z: -0.065904796}
 --- !u!82 &8253718007677691202
 AudioSource:
   m_ObjectHideFlags: 0
@@ -216,6 +224,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1762186336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940166933833050073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d118c98605f113d4bbb12ffeb7259600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infoIcon: {fileID: 0}
+  triggeringMask:
+    serializedVersion: 2
+    m_Bits: 64
+  openingSound: {fileID: 8300000, guid: b92ad9fee552acd4ba4472ef7db5d748, type: 3}
+  closingSound: {fileID: 8300000, guid: 54966f9a829458d4ab60f4fbb73b3964, type: 3}
 --- !u!1 &940886624822469461 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1936011742919702, guid: df2f14ece3a3a0847aad4f1407b39c50, type: 3}
@@ -234,6 +260,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.2371999, y: 2.5488997, z: 0.1396}
   m_Center: {x: 0, y: 1.2744498, z: -0.0313}
+--- !u!114 &2081618686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940886624822469461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!4 &943806914376196205 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4856336461430574, guid: df2f14ece3a3a0847aad4f1407b39c50, type: 3}

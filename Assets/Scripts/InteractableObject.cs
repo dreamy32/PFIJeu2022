@@ -1,9 +1,7 @@
-using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-[RequireComponent(typeof(CapsuleCollider))]
+[RequireComponent(typeof(SphereCollider))]
 public abstract class InteractableObject : MonoBehaviour
 {
     [Header(
@@ -128,9 +126,9 @@ public abstract class InteractableObject : MonoBehaviour
                 if (Camera.main == null) //Temp fix
                     return;
                 var camTransform = Camera.main.transform;
-                if (Physics.Raycast(camTransform.position, camTransform.transform.forward, out RaycastHit))
+                if (Physics.Raycast(camTransform.position, camTransform.forward, out var hit, _triggerCollider.radius))
                 {
-                    _canInteract = RaycastHit.collider.CompareTag(InteractionManager.InteractionTag);
+                    _canInteract = hit.collider.CompareTag(InteractionManager.InteractionTag) && hit.collider != _triggerCollider;a
                     ToggleInfo(_canInteract);
                 }
                 else
@@ -149,7 +147,7 @@ public abstract class InteractableObject : MonoBehaviour
         var camTransform = Camera.main.transform;
         if (_canInteract && Physics.Raycast(camTransform.position, camTransform.forward, out RaycastHit, _triggerCollider.radius))
         {
-            if (RaycastHit.collider.tag.Equals(InteractionManager.InteractionTag))
+            if (RaycastHit.collider.CompareTag(InteractionManager.InteractionTag))
             {
                 OnInteract();
             }

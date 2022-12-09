@@ -39544,29 +39544,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 940166933833050073, guid: bd468c593a6a9f94fb63e9b34a039168, type: 3}
+    - target: {fileID: 940812180864950047, guid: bd468c593a6a9f94fb63e9b34a039168, type: 3}
+      propertyPath: m_TagString
+      value: Interactable
+      objectReference: {fileID: 0}
+    - target: {fileID: 940886624822469461, guid: bd468c593a6a9f94fb63e9b34a039168, type: 3}
       propertyPath: m_TagString
       value: Interactable
       objectReference: {fileID: 0}
     - target: {fileID: 2509107394437543756, guid: bd468c593a6a9f94fb63e9b34a039168, type: 3}
       propertyPath: m_Name
       value: SmallDoor (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2963005142207151935, guid: bd468c593a6a9f94fb63e9b34a039168, type: 3}
-      propertyPath: m_Radius
-      value: 0.8137179
-      objectReference: {fileID: 0}
-    - target: {fileID: 2963005142207151935, guid: bd468c593a6a9f94fb63e9b34a039168, type: 3}
-      propertyPath: m_Center.x
-      value: 0.64122385
-      objectReference: {fileID: 0}
-    - target: {fileID: 2963005142207151935, guid: bd468c593a6a9f94fb63e9b34a039168, type: 3}
-      propertyPath: m_Center.y
-      value: 1.536842
-      objectReference: {fileID: 0}
-    - target: {fileID: 2963005142207151935, guid: bd468c593a6a9f94fb63e9b34a039168, type: 3}
-      propertyPath: m_Center.z
-      value: -0.065904796
       objectReference: {fileID: 0}
     - target: {fileID: 5448409201708013815, guid: bd468c593a6a9f94fb63e9b34a039168, type: 3}
       propertyPath: m_RootOrder
@@ -39611,6 +39599,10 @@ PrefabInstance:
     - target: {fileID: 5448409201708013815, guid: bd468c593a6a9f94fb63e9b34a039168, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7029312944097661007, guid: bd468c593a6a9f94fb63e9b34a039168, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd468c593a6a9f94fb63e9b34a039168, type: 3}
@@ -39697,29 +39689,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1759920764}
   m_Mesh: {fileID: 4300000, guid: 99d1229755c80d54d975792177cdddee, type: 3}
---- !u!1 &1762186332 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 940166933833050073, guid: bd468c593a6a9f94fb63e9b34a039168, type: 3}
-  m_PrefabInstance: {fileID: 1754490896}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1762186336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1762186332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d118c98605f113d4bbb12ffeb7259600, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  infoIcon: {fileID: 0}
-  triggeringMask:
-    serializedVersion: 2
-    m_Bits: 64
-  openingSound: {fileID: 8300000, guid: b92ad9fee552acd4ba4472ef7db5d748, type: 3}
-  closingSound: {fileID: 8300000, guid: 54966f9a829458d4ab60f4fbb73b3964, type: 3}
 --- !u!1001 &1764666414
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47092,29 +47061,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 475148, guid: b826295956c65444987d7baae67c5858, type: 3}
   m_PrefabInstance: {fileID: 2074634454}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2081618681 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 940886624822469461, guid: bd468c593a6a9f94fb63e9b34a039168, type: 3}
-  m_PrefabInstance: {fileID: 1754490896}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2081618686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2081618681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 2
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1001 &2083704826
 PrefabInstance:
   m_ObjectHideFlags: 0

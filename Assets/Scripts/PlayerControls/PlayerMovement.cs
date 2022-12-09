@@ -49,6 +49,8 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
+        // Vector3 forward = Camera.main.transform.forward * 10;
+        // Debug.DrawRay(Camera.main.transform.position, forward, Color.green);
         isGrounded = controller.isGrounded;
     }
 
