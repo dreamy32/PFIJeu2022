@@ -57,7 +57,7 @@ public class PlaneMeshGeneratorComponent : MonoBehaviour
                 triangles.Add(i + 1);
             }
         }
-      
+
 
 
         planeMesh.vertices = vertices.ToArray();
@@ -70,12 +70,6 @@ public class PlaneMeshGeneratorComponent : MonoBehaviour
 
     void Update()
     {
-        Vector3[] vertices = GetComponent<MeshFilter>().mesh.vertices;
-        for (int i = 0; i < vertices.Length; i++)
-        {
-            vertices[i].y = Time.deltaTime;
-        }
-        GetComponent<MeshFilter>().mesh.vertices = vertices;
-        GetComponent<MeshFilter>().mesh.RecalculateNormals();
+
     }
 }

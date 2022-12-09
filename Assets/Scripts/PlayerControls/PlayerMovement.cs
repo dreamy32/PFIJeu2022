@@ -87,11 +87,17 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Sprint(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed)
-            isRunning = true;
-        else if (ctx.canceled)
-            isRunning = false;
-        speed = isRunning ? sprintSpeed : walkSpeed;
+        if (!isCrouching)
+        {
+            if (ctx.performed)
+                isRunning = true;
+
+
+            else if (ctx.canceled)
+                isRunning = false;
+            speed = isRunning ? sprintSpeed : walkSpeed;
+        }
+        
     }
 
     // An event that is invoked when pressing space
@@ -106,7 +112,7 @@ public class PlayerMovement : MonoBehaviour
     public void Crouch()
     {
        
-            if (!isCrouching && controller.isGrounded) // if standing up
+            if (!isCrouching && controller.isGrounded &&!isRunning) // if standing up
             {
                 CrouchMovement();
             }
