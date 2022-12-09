@@ -128,7 +128,7 @@ public abstract class InteractableObject : MonoBehaviour
                 var camTransform = Camera.main.transform;
                 if (Physics.Raycast(camTransform.position, camTransform.forward, out var hit, _triggerCollider.radius))
                 {
-                    _canInteract = hit.collider.CompareTag(InteractionManager.InteractionTag) && hit.collider != _triggerCollider;a
+                    _canInteract = hit.collider.CompareTag(InteractionManager.InteractionTag) && hit.collider != _triggerCollider;
                     ToggleInfo(_canInteract);
                 }
                 else
