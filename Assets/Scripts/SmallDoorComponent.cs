@@ -28,6 +28,7 @@ public class SmallDoorComponent : InteractableObject
     }
     protected override void OnInteract()
     {
+        Debug.Log("oui");
         if (!isOpen)
         {
             PlaySound(openingSound);
