@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
             _globalPowerState = value;
             //
             foreach (var light in LightComponent.GetLights())
-                light.Toggle(value);
+                light.Toggle(value, true);
         }
     }
 
