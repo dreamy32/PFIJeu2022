@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlashlightComponent : InteractableObject
+public class PickableFlashlightComponent : InteractableObject
 {
     //[SerializeField] AudioClip clickSound;
     [SerializeField] GameObject playerFlashlight;

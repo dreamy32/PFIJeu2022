@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class LightComponent : MonoBehaviour
 {
@@ -20,6 +22,7 @@ public class LightComponent : MonoBehaviour
     private Light[] _lights;
     private Renderer[] _renderers;
     private static List<LightComponent> instances;
+    public bool toggleOnStart;
 
     private void Awake()
     {
@@ -27,26 +30,42 @@ public class LightComponent : MonoBehaviour
         instances ??= new List<LightComponent>();
         instances.Add(this);
         //
-        _lights = GetComponentsInChildren<Light>();
+        _lights = GetComponentsInChildren<Light>(true);
         _renderers = GetComponentsInChildren<Renderer>();
-        Toggle(state);
         //
         if (flickOnAwake)
             Flick(time, flickDuration);
     }
 
+    private void Start()
+    {
+        if (toggleOnStart)
+            Toggle(state);
+    }
+
+    public bool GetState() => state;
+
     /// <summary>
     /// Turn on/off all the lights
     /// </summary>
     /// <param name="state">The desired state to affect to all lights children.</param>
-    public void Toggle(bool state)
+    /// <param name="ignoreGlobalPstate">Ignore the global power state. Should only be used for objects like a flashlight that are independant.</param>
+    public void Toggle(bool state, bool ignoreGlobalPstate = false)
     {
+        if (!GameManager.GlobalPowerState && !ignoreGlobalPstate)
+        {
+            Debug.LogWarning(
+                $"Can't pursue action because there is no power. Try affecting the state to {GameManager.GlobalPowerState} instead or set {ignoreGlobalPstate} to true.");
+            return;
+        }
+
         this.state = state;
         //Jouer un son ?
         for (var i = 0; i < _lights.Length; i++)
         {
             _lights[i].enabled = state;
-            _renderers[i].material = state ? materialOn : materialOff;
+            if (materialOn != null && materialOff != null)
+                _renderers[i].material = state ? materialOn : materialOff;
         }
     }
 

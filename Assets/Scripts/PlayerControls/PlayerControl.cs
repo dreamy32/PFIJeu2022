@@ -80,6 +80,15 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Hold"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Toggle"",
+                    ""type"": ""Button"",
+                    ""id"": ""e1f7a41c-457b-4e17-9e19-8a2bbe84c190"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -192,6 +201,17 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                     ""action"": ""Sprint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eb4434fd-57a4-4963-8248-fbacf5040ddb"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Toggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -234,6 +254,7 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
         m_OnGround_Interact = m_OnGround.FindAction("Interact", throwIfNotFound: true);
         m_OnGround_Crouch = m_OnGround.FindAction("Crouch", throwIfNotFound: true);
         m_OnGround_Sprint = m_OnGround.FindAction("Sprint", throwIfNotFound: true);
+        m_OnGround_Toggle = m_OnGround.FindAction("Toggle", throwIfNotFound: true);
         // Hiding
         m_Hiding = asset.FindActionMap("Hiding", throwIfNotFound: true);
         m_Hiding_GetOut = m_Hiding.FindAction("GetOut", throwIfNotFound: true);
@@ -302,6 +323,7 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
     private readonly InputAction m_OnGround_Interact;
     private readonly InputAction m_OnGround_Crouch;
     private readonly InputAction m_OnGround_Sprint;
+    private readonly InputAction m_OnGround_Toggle;
     public struct OnGroundActions
     {
         private @PlayerControl m_Wrapper;
@@ -312,6 +334,7 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_OnGround_Interact;
         public InputAction @Crouch => m_Wrapper.m_OnGround_Crouch;
         public InputAction @Sprint => m_Wrapper.m_OnGround_Sprint;
+        public InputAction @Toggle => m_Wrapper.m_OnGround_Toggle;
         public InputActionMap Get() { return m_Wrapper.m_OnGround; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -339,6 +362,9 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                 @Sprint.started -= m_Wrapper.m_OnGroundActionsCallbackInterface.OnSprint;
                 @Sprint.performed -= m_Wrapper.m_OnGroundActionsCallbackInterface.OnSprint;
                 @Sprint.canceled -= m_Wrapper.m_OnGroundActionsCallbackInterface.OnSprint;
+                @Toggle.started -= m_Wrapper.m_OnGroundActionsCallbackInterface.OnToggle;
+                @Toggle.performed -= m_Wrapper.m_OnGroundActionsCallbackInterface.OnToggle;
+                @Toggle.canceled -= m_Wrapper.m_OnGroundActionsCallbackInterface.OnToggle;
             }
             m_Wrapper.m_OnGroundActionsCallbackInterface = instance;
             if (instance != null)
@@ -361,6 +387,9 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                 @Sprint.started += instance.OnSprint;
                 @Sprint.performed += instance.OnSprint;
                 @Sprint.canceled += instance.OnSprint;
+                @Toggle.started += instance.OnToggle;
+                @Toggle.performed += instance.OnToggle;
+                @Toggle.canceled += instance.OnToggle;
             }
         }
     }
@@ -406,6 +435,7 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
+        void OnToggle(InputAction.CallbackContext context);
     }
     public interface IHidingActions
     {
