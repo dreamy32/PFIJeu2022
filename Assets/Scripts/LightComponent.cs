@@ -53,6 +53,7 @@ public class LightComponent : MonoBehaviour
     //Flicking
     private bool _stateBeforeFlicking;
     private Coroutine _flickerRoutine;
+
     /// <summary>
     /// Flick lights over a period of time.
     /// </summary>
@@ -83,13 +84,19 @@ public class LightComponent : MonoBehaviour
         //Équivaut à endState != null ? endState.Value : _stateBeforeFlicking
         Toggle(endState ?? _stateBeforeFlicking);
     }
-    
+
     /// <summary>
     /// For the other scripts to get a copy of the instances list and work with them.
     /// </summary>
     /// <returns>A copy of the instances list.</returns>
     public static List<LightComponent> GetLights()
     {
+        if (instances == null)
+        {
+            Debug.LogWarning("Il y a sûrement aucun LightComponent dans la scène.");
+            return null;
+        }
+        //
         return new List<LightComponent>(instances);
     }
 }

@@ -2591,6 +2591,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashlightSpawns: []
   flashlight: {fileID: 0}
+  initGlobalPowerState: 1
 --- !u!1 &135273799
 GameObject:
   m_ObjectHideFlags: 0
@@ -3813,7 +3814,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh38104
+  m_Name: pb_Mesh83780
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13865,7 +13866,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh37134
+  m_Name: pb_Mesh82810
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -31757,7 +31758,7 @@ MonoBehaviour:
   state: 0
   materialOn: {fileID: 2100000, guid: 6a26c29b0186b3949a52130085310c48, type: 2}
   materialOff: {fileID: 2100000, guid: 43e1eaee58e6e1f42a8e6d905a406298, type: 2}
-  flickOnAwake: 1
+  flickOnAwake: 0
   time: 0.2
   flickDuration: 10
 --- !u!1001 &1686378234
@@ -34387,7 +34388,7 @@ PrefabInstance:
       objectReference: {fileID: 808854495}
     - target: {fileID: 827981445268382514, guid: 9c25864566bc2a7489bef25ecb47dd6c, type: 3}
       propertyPath: m_VersionIndex
-      value: 106
+      value: 115
       objectReference: {fileID: 0}
     - target: {fileID: 3216303942629817090, guid: 9c25864566bc2a7489bef25ecb47dd6c, type: 3}
       propertyPath: m_TagString
@@ -34403,7 +34404,7 @@ PrefabInstance:
       objectReference: {fileID: 220249696}
     - target: {fileID: 4518296554584771676, guid: 9c25864566bc2a7489bef25ecb47dd6c, type: 3}
       propertyPath: m_VersionIndex
-      value: 115
+      value: 124
       objectReference: {fileID: 0}
     - target: {fileID: 4561579598725239949, guid: 9c25864566bc2a7489bef25ecb47dd6c, type: 3}
       propertyPath: m_PlayOnAwake

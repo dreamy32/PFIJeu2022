@@ -148,7 +148,7 @@ public abstract class InteractableObject : MonoBehaviour
             return; //temp fix
         var camTransform = Camera.main.transform;
         if (_canInteract && Physics.Raycast(camTransform.position, camTransform.forward, out RaycastHit,
-                _triggerCollider.radius))
+                2f))
         {
             if (RaycastHit.collider.CompareTag(InteractionManager.InteractionTag))
             {
