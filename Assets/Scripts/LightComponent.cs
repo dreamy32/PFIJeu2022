@@ -93,9 +93,10 @@ public class LightComponent : MonoBehaviour
     {
         if (instances == null)
         {
-            Debug.LogWarning("Il y a sûrement aucun LightComponent dans la scène.");
+            Debug.LogError($"There are no {nameof(LightComponent)} in the scene.");
             return null;
         }
+
         //
         return new List<LightComponent>(instances);
     }
