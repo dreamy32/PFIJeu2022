@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -23,8 +22,6 @@ public abstract class InteractableObject : MonoBehaviour
 
     private SphereCollider _triggerCollider;
 
-    private List<Collider> colliderList;
-
     //
     private Outline[] _outlines; //Peut avoir plus que un outline
 
@@ -36,9 +33,6 @@ public abstract class InteractableObject : MonoBehaviour
     {
         //Trigger
         _triggerCollider = GetComponent<SphereCollider>();
-        colliderList = new List<Collider>();
-        colliderList.AddRange(GetComponentsInChildren<Collider>());
-        //
         if (!_triggerCollider.isTrigger)
             Debug.LogWarning("The collider of the Vault Door must have 'isTrigger' checked.");
 
@@ -132,11 +126,11 @@ public abstract class InteractableObject : MonoBehaviour
                 if (Camera.main == null) //Temp fix
                     return;
                 var camTransform = Camera.main.transform;
-                if (Physics.Raycast(camTransform.position, camTransform.forward, out var hit
-                        ))
+                if (Physics.Raycast(camTransform.position, camTransform.forward, out var hit,
+                        2f))
                 {
                     _canInteract = hit.collider.CompareTag(InteractionManager.InteractionTag) &&
-                                   hit.collider != _triggerCollider && colliderList.Contains(_triggerCollider);
+                                   hit.collider != _triggerCollider;
                     ToggleInfo(_canInteract);
                 }
                 else
@@ -153,7 +147,8 @@ public abstract class InteractableObject : MonoBehaviour
         if (Camera.main == null)
             return; //temp fix
         var camTransform = Camera.main.transform;
-        if (_canInteract && Physics.Raycast(camTransform.position, camTransform.forward, out RaycastHit))
+        if (_canInteract && Physics.Raycast(camTransform.position, camTransform.forward, out RaycastHit,
+                2f))
         {
             if (RaycastHit.collider.CompareTag(InteractionManager.InteractionTag))
             {
