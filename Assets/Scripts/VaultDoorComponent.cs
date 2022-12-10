@@ -18,6 +18,5 @@ public class VaultDoorComponent : InteractableObject
     protected override void OnInteract()
     {
         _animator.SetTrigger(OpenTrigger);
-        _animator.ResetTrigger(OpenTrigger);
     }
 }
