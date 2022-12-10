@@ -2,19 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-public class SkipIntro : MonoBehaviour
-{
-    [SerializeField] Text skipText;
-    [SerializeField] string sceneToLoad;
-    [SerializeField] Text endOfIntro;
 
-    static public bool allowActivation;
-    private void Awake()
-    {
-        skipText.gameObject.SetActive(false);
-        StartCoroutine(nameof(LoadScene));
-    }
+
+public class ChangeSceneAfterIntro : MonoBehaviour
+{
+    [SerializeField] string sceneToLoad;
     IEnumerator LoadScene()
     {
         var asyncLoad = SceneManager.LoadSceneAsync(sceneToLoad);
@@ -24,15 +16,16 @@ public class SkipIntro : MonoBehaviour
             Debug.Log("Loading progress: " + (asyncLoad.progress * 100) + "%");
             if (asyncLoad.progress >= 0.9f)
             {
-                skipText.gameObject.SetActive(true);
                 
-                yield return new WaitUntil(() => Input.anyKeyDown || endOfIntro.isActiveAndEnabled );
                 asyncLoad.allowSceneActivation = true;
-
                 yield break;
             }
         }
 
         yield return null;
+    }
+    public void OnEnable()
+    {
+        StartCoroutine(nameof(LoadScene));
     }
 }

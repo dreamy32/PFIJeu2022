@@ -23,6 +23,7 @@ public class ChangeSceneOnClick : MonoBehaviour
 
         yield return null;
     }
+  
     public void ChangeScene()
     {
         StartCoroutine(nameof(LoadScene));

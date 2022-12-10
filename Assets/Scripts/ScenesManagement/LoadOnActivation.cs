@@ -5,8 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class LoadOnActivation : MonoBehaviour
 {
-    void OnEnable()
+
+    void Start()
     {
-        SceneManager.LoadScene("Map_Hosp1", LoadSceneMode.Single);
+        // Je sais...
+        SkipIntro.allowActivation = true;
+        Debug.Log(SkipIntro.allowActivation);
     }
+
 }
