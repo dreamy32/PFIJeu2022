@@ -136,6 +136,4 @@ public class PlayerMovement : MonoBehaviour
         //return !rayCast.ObjRay.
         return !Physics.Raycast(topRaycastLocation.position, topRaycastLocation.up, out RaycastHit hit, 2);
     }
-
-
 }
