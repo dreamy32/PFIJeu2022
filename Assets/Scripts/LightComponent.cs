@@ -55,7 +55,7 @@ public class LightComponent : MonoBehaviour
         if (!GameManager.GlobalPowerState && !ignoreGlobalPstate)
         {
             Debug.LogWarning(
-                $"Can't pursue action because there is no power. Try affecting the state to {GameManager.GlobalPowerState} instead or set {ignoreGlobalPstate} to true.");
+                $"Can't pursue action because there is no power. Try affecting the state to {nameof(GameManager.GlobalPowerState)} instead or set {nameof(ignoreGlobalPstate)} to true.");
             return;
         }
 
@@ -91,7 +91,7 @@ public class LightComponent : MonoBehaviour
         StartCoroutine(FlickerStopAfterDuration(duration, endState));
         while (true)
         {
-            Toggle(!state);
+            Toggle(!state, true);
             yield return new WaitForSeconds(flickTime);
         }
     }
