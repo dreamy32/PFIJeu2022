@@ -29,6 +29,8 @@ public class HideOnInteract : InteractableObject
     {
         player = Camera.main.transform.root;
         //
+
+        
         hidingCam.enabled = true;
         player.gameObject.SetActive(false);
         _audioListener.enabled = true;

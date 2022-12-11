@@ -11,7 +11,6 @@ public class WaveDeformComponent : MonoBehaviour
     private MeshFilter _meshFilter;
     private Vector3[] vertices;
     float offset;
-
     // private void Awake()
     // {
     //     _meshFilter = GetComponent<MeshFilter>();

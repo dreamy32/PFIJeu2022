@@ -21,11 +21,12 @@ public class FlashlightComponent : MonoBehaviour
         // state = _lightComponent.GetState();
     }
     
-    public void ToggleFlashlight()
+    public bool ToggleFlashlight()
     {
         state = _lightComponent.GetState();
         _audioClip = state ? turnOnSound : turnOffSound;
         _lightComponent.Toggle(!state, true);
         _audioSource.Play();
+        return state;
     }
 }

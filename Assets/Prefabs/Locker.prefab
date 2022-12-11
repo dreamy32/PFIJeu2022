@@ -129,6 +129,82 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7054806, y: 1.8353457, z: 0.5923002}
   m_Center: {x: -7.924217e-15, y: 0.9176729, z: 0.000008508565}
+--- !u!1 &3583264979178250188
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3174924232519931833}
+  - component: {fileID: 2498777496305140439}
+  - component: {fileID: 4169852709155150200}
+  m_Layer: 0
+  m_Name: hidingCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3174924232519931833
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3583264979178250188}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3600778639858042733}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2498777496305140439
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3583264979178250188}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.69791603, y: 1.801201, z: 0.5857231}
+  m_Center: {x: -0.006824928, y: 0.9429589, z: 0.0047011375}
+--- !u!114 &4169852709155150200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3583264979178250188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8be7bbd42c6f430468b117947c76843c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11500000, guid: 62bfd6ef636d87c4c8f35eba7d42e5ca, type: 3}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3600778638262170157
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,6 +365,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: b00a9fba-20a2-4637-b51b-ab0bd5828ce5
     m_ActionName: OnGround/Sprint[/Keyboard/shift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e1f7a41c-457b-4e17-9e19-8a2bbe84c190
+    m_ActionName: OnGround/Toggle[/Keyboard/f]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Hiding
@@ -329,6 +409,7 @@ Transform:
   - {fileID: 4877409924622281784}
   - {fileID: 3600778639368703630}
   - {fileID: 5744453044343936986}
+  - {fileID: 3174924232519931833}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90.886, z: 0}

@@ -715,7 +715,7 @@ MonoBehaviour:
   flickOnAwake: 0
   time: 0
   flickDuration: 0
-  toggleOnStart: 0
+  toggleOnStart: 1
 --- !u!114 &5032696051497105697
 MonoBehaviour:
   m_ObjectHideFlags: 0

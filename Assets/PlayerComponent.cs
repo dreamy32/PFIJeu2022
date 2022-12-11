@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerComponent : MonoBehaviour
 {
     private FlashlightComponent _flashlightComponent;
+    public static bool flashlightIsOn;
     private void Awake()
     {
         _flashlightComponent = GetComponentInChildren<FlashlightComponent>(true);
@@ -16,7 +17,8 @@ public class PlayerComponent : MonoBehaviour
     {
         if (ctx.performed && _flashlightComponent.gameObject.activeInHierarchy)
         {
-            _flashlightComponent.ToggleFlashlight();
+
+            flashlightIsOn = _flashlightComponent.ToggleFlashlight();
         }
     }
 }

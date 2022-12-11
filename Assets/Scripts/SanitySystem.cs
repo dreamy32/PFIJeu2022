@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public enum PlayerSanity { Sane, Scared, Insane }
-public enum PlayerState { Hide, Dark}
 public class SanitySystem : MonoBehaviour
 {
     [Header("Sounds")]
@@ -15,8 +14,8 @@ public class SanitySystem : MonoBehaviour
     [Header("Sanity")]
     [SerializeField]  Image sanityBar;
     static Image staticSanityBar;
-    [SerializeField] static float sanityLoss = 0.01f;
-    [SerializeField] static float sanityGain = 0.01f;
+    [SerializeField]  float sanityLoss = 0.005f;
+    [SerializeField]  float sanityGain = 0.005f;
     [SerializeField] Image stateImage;
     [SerializeField] Image saneImage;
     [SerializeField] Image scaredImage;
@@ -25,39 +24,47 @@ public class SanitySystem : MonoBehaviour
 
     private static float currentSanity;
     PlayerSanity sanityLevel;
+    
 
     private bool inTheDark = true;
+    private bool isHiding = false;
 
 
-
-
-
-
+    void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+        staticSanityBar = sanityBar;
+    }
+    public void InTheDark(bool value)
+    {
+        inTheDark = value;
+    }
 
     #region Sanity
     private void ControlSanity()
     {
-        // Increase if
-        // seeing eye/bloodbuckets
-        // in chase
-        // in the dark
+        // Increase si le courant ainsi que la flashlight sont fermés
 
-
-        // Decrease if
-        // Inside hidingSpot
-        // Consuming Molson
-
-
-
-        if (inTheDark)
+        if (!GameManager.GlobalPowerState)
             IncreaseSanity();
-        //else
-        //{
-        //    if (currentStamina < 1 && IsGrounded)
-        //        RefillStamina();
-        //}
+        else
+            DecreaseSanity();
+
+
+        switch (sanityLevel)
+        {
+            case PlayerSanity.Sane:
+                //PlayRandomSound();
+                break;
+            case PlayerSanity.Scared:
+               
+                break;
+            case PlayerSanity.Insane:
+                
+                break;
+        }
     }
-    static public void ResetSanity()
+    public static  void ResetSanity()
     {
         currentSanity = 0f;
         staticSanityBar.fillAmount = currentSanity / 1;
@@ -73,7 +80,7 @@ public class SanitySystem : MonoBehaviour
     }
 
 
-    static void IncreaseSanity()
+    private void IncreaseSanity()
     {
         currentSanity += sanityGain * Time.deltaTime;
         if (currentSanity >= 1)
@@ -106,18 +113,16 @@ public class SanitySystem : MonoBehaviour
             stateImage.sprite = insaneImage.sprite;
             return PlayerSanity.Insane;
     }
-    void Awake()
-    {
-        audioSource = GetComponent<AudioSource>();
-        staticSanityBar = sanityBar;
-    }
-
 
     void PlayRandomSound()
     {
-        int rand = Random.Range(0, scarySounds.Length);
-        audioSource.clip = scarySounds[rand];
-        audioSource.Play();
+        if (!audioSource.isPlaying)
+        {
+            int rand = Random.Range(0, scarySounds.Length);
+            audioSource.clip = scarySounds[rand];
+            audioSource.Play();
+        }
+       
     }
 
 
