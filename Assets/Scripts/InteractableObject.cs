@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -50,7 +51,6 @@ public abstract class InteractableObject : MonoBehaviour
 
         //Outline(s)
         _outlines = GetComponentsInChildren<Outline>();
-        Debug.Log(_outlines.Length);
 
         //Abonnement à InteractionManager
         InteractionManager.OnInteract += () =>
@@ -73,7 +73,7 @@ public abstract class InteractableObject : MonoBehaviour
         };
     }
 
-    protected void Start()
+    protected virtual void Start()
     {
         ToggleInfo(false);
     }
@@ -103,32 +103,11 @@ public abstract class InteractableObject : MonoBehaviour
         }
     }
 
-    // protected virtual void Update()
-    // {
-    //     if (_isTriggered && !_hasBeenUsed)
-    //     {
-    //         var camTransform = Camera.main.transform;
-    //         if (Physics.Raycast(camTransform.position, camTransform.transform.forward, out _raycastHit, Mathf.Infinity))
-    //         {
-    //             if (_raycastHit.collider.CompareTag(InteractionManager.InteractionTag))
-    //             {
-    //                 _canInteract = true;
-    //                 ToggleOutlines(true);
-    //             }
-    //             else
-    //             {
-    //                 _canInteract = false;
-    //                 ToggleOutlines(false);
-    //             }
-    //         }
-    //         else
-    //         {
-    //             _canInteract = false;
-    //             ToggleOutlines(false);
-    //         }
-    //     }
-    // }
-
+    private void Reset()
+    {
+        GetComponent<SphereCollider>().isTrigger = true;
+    }
+    
     protected virtual void Update()
     {
         if (!_hasBeenUsed)
