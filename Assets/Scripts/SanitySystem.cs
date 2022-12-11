@@ -44,7 +44,6 @@ public class SanitySystem : MonoBehaviour
     private void ControlSanity()
     {
         // Increase si le courant ainsi que la flashlight sont fermés
-
         if (!GameManager.GlobalPowerState)
             IncreaseSanity();
         else
