@@ -17,20 +17,48 @@ public class GameManager : MonoBehaviour
     //Attributs statiques
     private static bool _globalPowerState;
 
+    //Light components instances
+    private static List<LightComponent> _lightComponents;
+    private static List<LightSwitchComponent> _lightSwitchComponents;
+
     public static bool GlobalPowerState
     {
         get => _globalPowerState;
         set
         {
             _globalPowerState = value;
-            //
-            foreach (var light in LightComponent.GetLights())
-                light.Toggle(value, true);
+            //Iterate through all the light components
+            foreach (var light in _lightComponents)
+            {
+                //If the global power state is on
+                if (value)
+                {
+                    //Iterate through all light switch components
+                    foreach (var lightSwitch in _lightSwitchComponents)
+                    {
+                        //If the light component is associated with the light switch
+                        if (lightSwitch.lightComponent.Equals(light))
+                        {
+                            //Toggle the light according to the switch state
+                            light.Toggle(lightSwitch.switchState, true);
+                        }
+                        else
+                            //Toggle the light according to the global power state
+                            light.Toggle(value, true);
+                    }
+                }
+                else
+                    //Toggle the light according to the global power state (always false)
+                    light.Toggle(value, true);
+            }
         }
     }
 
     private void Awake()
     {
+        _lightComponents = LightComponent.GetLights();
+        _lightSwitchComponents = LightSwitchComponent.GetLightSwitches();
+        //
         SpawnFlashlight();
     }
 
@@ -41,8 +69,6 @@ public class GameManager : MonoBehaviour
 
     void SpawnFlashlight()
     {
-        if (SceneManager.GetActiveScene().name.Equals("Lighting Preview"))
-            return; //Delete this line at release
         Transform spawn = flashlightSpawns[Random.Range(0, flashlightSpawns.Count)];
         spawn.gameObject.SetActive(true);
     }

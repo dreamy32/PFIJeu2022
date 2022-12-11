@@ -1,15 +1,19 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator), typeof(AudioSource), typeof(Outline))]
 public class BreakerComponent : InteractableObject
 {
+    [SerializeField] private float cooldownTime;
+    //
     private Animator _animator;
     private AudioSource _audioSource;
     private Outline _outline;
+    //
     private static readonly int PullTrigger = Animator.StringToHash("Pull");
     private bool _isCooldownEnded = true;
-    [SerializeField] private float cooldownTime;
+    //
 
     protected override void Awake()
     {
@@ -21,7 +25,6 @@ public class BreakerComponent : InteractableObject
         //
         _outline.OutlineColor = Color.green;
     }
-
     protected override void OnInteract()
     {
         if (_isCooldownEnded)
@@ -31,7 +34,7 @@ public class BreakerComponent : InteractableObject
             _animator.SetTrigger(PullTrigger);
         }
     }
-
+   
     public void InteractAnimEvent()
     {
         _animator.ResetTrigger(PullTrigger);
