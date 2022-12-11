@@ -9,22 +9,23 @@ public class WaveDeformComponent : MonoBehaviour
     [SerializeField] private float radStepPerFrame;
 
     private MeshFilter _meshFilter;
-
+    private Vector3[] vertices;
     float offset;
 
-    private void Awake()
+    // private void Awake()
+    // {
+    //     _meshFilter = GetComponent<MeshFilter>();
+    // }
+
+    private void Start()
     {
         _meshFilter = GetComponent<MeshFilter>();
-
+        vertices = _meshFilter.mesh.vertices;
     }
 
-
-
-    //OpenAI (Above is me)
     private void Update() 
     {
         offset += Time.deltaTime * radStepPerFrame;
-        Vector3[] vertices = _meshFilter.mesh.vertices;
         for (int i = 0; i < vertices.Length; i++)
         {
             vertices[i].y = amplitude * Mathf.Sin((transform.position.x + vertices[i].x) / 2f + offset);

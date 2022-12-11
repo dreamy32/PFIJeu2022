@@ -22,7 +22,6 @@ public class PlaneMeshGeneratorComponent : MonoBehaviour
         triangles = new List<int>();
         uvs = new List<Vector2>();
         GetComponent<MeshFilter>().mesh = CreatePlaneMesh();
-
     }
 
 
@@ -35,7 +34,7 @@ public class PlaneMeshGeneratorComponent : MonoBehaviour
             for (float x = 0; x < verticesWidth; x++)
             {
                 uvs.Add(new Vector2(x / verticesWidth, y / verticesHeight));
-                vertices.Add(new Vector3(x * width, y * height, 0));
+                vertices.Add(new Vector3(x * width, 0, y * height));
             }
         }
 
