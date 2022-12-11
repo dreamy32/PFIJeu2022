@@ -16,7 +16,7 @@ public class SmallDoorComponent : InteractableObject
     {
         //InteractableObject attributes
         base.Awake();
-        SingleUsage = false; //Éviter de call l'animator pour rien
+        SingleUsage = false; //ï¿½viter de call l'animator pour rien
         isOpen = false;
         _animator = GetComponent<Animator>();
         audio = GetComponent<AudioSource>();
@@ -28,7 +28,6 @@ public class SmallDoorComponent : InteractableObject
     }
     protected override void OnInteract()
     {
-        Debug.Log("oui");
         if (!isOpen)
         {
             PlaySound(openingSound);
