@@ -1,36 +1,27 @@
-using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
+
+[RequireComponent(typeof(MeshFilter))]
+[RequireComponent(typeof(MeshRenderer))]
 public class WaveDeformComponent : MonoBehaviour
 {
-    
-    [SerializeField] private float amplitude = 4f;
-    [SerializeField] private float radStepPerFrame;
-
+    [SerializeField] private float amplitude = 1f;
     private MeshFilter _meshFilter;
-
-    float offset;
 
     private void Awake()
     {
         _meshFilter = GetComponent<MeshFilter>();
-
     }
-
-
-
-    //OpenAI (Above is me)
-    private void Update() 
+    private void Update()
     {
-        offset += Time.deltaTime * radStepPerFrame;
         Vector3[] vertices = _meshFilter.mesh.vertices;
         for (int i = 0; i < vertices.Length; i++)
         {
-            vertices[i].y = amplitude * Mathf.Sin((transform.position.x + vertices[i].x) / 2f + offset);
+            vertices[i].y = amplitude * Mathf.Sin((Time.timeSinceLevelLoad + vertices[i].x));
         }
-        _meshFilter.mesh.vertices = vertices;
-        _meshFilter.mesh.RecalculateNormals();
 
+        _meshFilter.mesh.vertices = vertices;
     }
 }
