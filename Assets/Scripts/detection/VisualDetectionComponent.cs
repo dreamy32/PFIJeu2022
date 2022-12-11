@@ -22,67 +22,67 @@ public class VisualDetectionComponent : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        time += Time.deltaTime;
-        if (time >= waitTime)
-        {
-        Seek();
-        time = 0;
-         }
+    //void Update()
+    //{
+    //    time += Time.deltaTime;
+    //    if (time >= waitTime)
+    //    {
+    //    Seek();
+    //    time = 0;
+    //     }
 
-    }
-
-
-    private void Seek()
-    {
-        for (int compteur = 0; compteur < prey.Count; compteur++)
-        {
-
-            if (IsInFov(prey[compteur]))
-            {
-                Debug.Log("Je te vois" + prey[compteur].name);
-            }
-        }
-    }
-
-    private bool IsInFov(GameObject obj)
-    {
-        Vector3 Origine = transform.position;
-        Vector3 destination = obj.transform.position;
-        Vector3 direction = destination - Origine;
-
-        if (direction.y < 0 || direction.y > height) // bonne hauteur
-        {
-            return false;
-        }
-
-        direction.y = 0;
-        float deltaAngle = Vector3.Angle(direction, transform.forward);
-        if (deltaAngle > angle) // dans l'angle
-        {
-            return false;
-        }
-
-        Origine.y += height / 2;
-        destination.y = Origine.y;
-
-        RaycastHit hit;
-
-        if (Physics.Raycast(Origine, direction, out hit)) // regarde s'il peut le voir (obstacle)
-        {
-            if (hit.collider.name != obj.name)
-            {
-                Debug.DrawRay(Origine, direction, Color.cyan);
-                //Debug.Log(hit.collider.name);
-                return false;
-            }
-
-        }
+    //}
 
 
-        return true;
-    }
+    //private void Seek()
+    //{
+    //    for (int compteur = 0; compteur < prey.Count; compteur++)
+    //    {
+
+    //        if (IsInFov(prey[compteur]))
+    //        {
+    //            Debug.Log("Je te vois" + prey[compteur].name);
+    //        }
+    //    }
+    //}
+
+    //private bool IsInFov(GameObject obj)
+    //{
+    //    Vector3 Origine = transform.position;
+    //    Vector3 destination = obj.transform.position;
+    //    Vector3 direction = destination - Origine;
+
+    //    if (direction.y < 0 || direction.y > height) // bonne hauteur
+    //    {
+    //        return false;
+    //    }
+
+    //    direction.y = 0;
+    //    float deltaAngle = Vector3.Angle(direction, transform.forward);
+    //    if (deltaAngle > angle) // dans l'angle
+    //    {
+    //        return false;
+    //    }
+
+    //    Origine.y += height / 2;
+    //    destination.y = Origine.y;
+
+    //    RaycastHit hit;
+
+    //    if (Physics.Raycast(Origine, direction, out hit)) // regarde s'il peut le voir (obstacle)
+    //    {
+    //        if (hit.collider.name != obj.name)
+    //        {
+    //            Debug.DrawRay(Origine, direction, Color.cyan);
+    //            //Debug.Log(hit.collider.name);
+    //            return false;
+    //        }
+
+    //    }
+
+
+    //    return true;
+    //}
 
     Mesh CreateWedgeMesh()
     {
