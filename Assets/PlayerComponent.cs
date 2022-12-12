@@ -14,10 +14,7 @@ public class PlayerComponent : MonoBehaviour
     {
         if (ctx.performed && _flashlightComponent.gameObject.activeInHierarchy)
         {
-
             FlashlightIsOn = _flashlightComponent.ToggleFlashlight();
-            FlashlightIsOn = true;
         }
-        FlashlightIsOn = false;
     }
 }

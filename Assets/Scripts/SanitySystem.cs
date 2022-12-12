@@ -51,25 +51,25 @@ public class SanitySystem : MonoBehaviour
 
     private void ControlSanity()
     {
-        // Increase si le courant ainsi que la flashlight sont ferm�s
+        // Increase si le courant est ferm�
         if (InTheDark)
             IncreaseSanity();
         else
             DecreaseSanity();
 
 
-        switch (_sanityLevel)
-        {
-            case PlayerSanity.Sane:
-                //PlayRandomSound();
-                break;
-            case PlayerSanity.Scared:
-
-                break;
-            case PlayerSanity.Insane:
-
-                break;
-        }
+        //switch (sanityLevel)
+        //{
+        //    case PlayerSanity.Sane:
+        //        //PlayRandomSound();
+        //        break;
+        //    case PlayerSanity.Scared:
+               
+        //        break;
+        //    case PlayerSanity.Insane:
+                
+        //        break;
+        //}
     }
 
     public static void ResetSanity()

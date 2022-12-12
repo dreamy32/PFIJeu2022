@@ -63,15 +63,17 @@ public class LightComponent : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (GameTools.CompareLayers(triggeringMask, other.gameObject.layer) && !PlayerComponent.FlashlightIsOn)
+        if (GameTools.CompareLayers(triggeringMask, other.gameObject.layer))
             SanitySystem.InTheDark = !state;
 
     }
     private void OnTriggerStay(Collider other)
     {
 
-        if (GameTools.CompareLayers(triggeringMask, other.gameObject.layer) && !PlayerComponent.FlashlightIsOn)
+        if (GameTools.CompareLayers(triggeringMask, other.gameObject.layer) )
             SanitySystem.InTheDark = !state;
+
+        Debug.Log(PlayerComponent.FlashlightIsOn);
     }
     private void OnTriggerExit(Collider other)
     {
