@@ -11,7 +11,9 @@ public enum PlayerSanity
 [RequireComponent(typeof(AudioSource))]
 public class SanitySystem : MonoBehaviour
 {
-    [Header("Sounds")] [SerializeField] private AudioClip[] scarySounds;
+    [Header("Sounds")] 
+    [SerializeField] private AudioClip[] scarySounds;
+    [SerializeField] float audioSanityLost = 0.15f;
     private AudioSource _audioSource;
 
 
@@ -89,10 +91,13 @@ public class SanitySystem : MonoBehaviour
         _staticSanityBar.fillAmount = _currentSanity / 1;
     }
 
-
-    private void IncreaseSanity()
+    private void IncreaseSanity(bool determinedAmount = false)
     {
-        _currentSanity += sanityGain * Time.deltaTime;
+        if (!determinedAmount)
+            _currentSanity += sanityGain * Time.deltaTime;
+        else
+            _currentSanity += audioSanityLost;
+
         if (_currentSanity >= 1)
             _currentSanity = 1;
 
@@ -126,13 +131,24 @@ public class SanitySystem : MonoBehaviour
         return PlayerSanity.Insane;
     }
 
-    private void PlayRandomSound()
+    private IEnumerator PlayRandomSound()
     {
-        if (!_audioSource.isPlaying)
+        int maxValueRandom = 7;
+        int multiple = 2;
+        while (true)
         {
-            var rand = Random.Range(0, scarySounds.Length);
-            _audioSource.clip = scarySounds[rand];
-            _audioSource.Play();
+            if(Random.Range(0, maxValueRandom) % multiple == 0)
+            {
+                IncreaseSanity(true);
+
+                if (!audioSource.isPlaying)
+                {
+                    int rand = Random.Range(0, scarySounds.Length);
+                    audioSource.clip = scarySounds[rand];
+                    audioSource.Play();
+                }
+            }
+            yield return new WaitForSeconds(45);
         }
     }
 }
