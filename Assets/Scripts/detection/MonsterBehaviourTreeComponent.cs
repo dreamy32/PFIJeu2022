@@ -26,6 +26,14 @@ public class MonsterBehaviourTreeComponent : MonoBehaviour
         SetupTree();
     }
 
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if(target.CompareTag(collision.transform.tag))
+    //    {
+
+    //    }
+    //}
+
     private void SetupTree()
     {
         
