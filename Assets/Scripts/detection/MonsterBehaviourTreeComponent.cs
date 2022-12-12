@@ -14,6 +14,11 @@ public class MonsterBehaviourTreeComponent : MonoBehaviour
     [SerializeField] float waitTime = 2;
     [SerializeField] float runningSpeed = 5;
     [SerializeField] float walkingSpeed = 3.5f;
+
+    [SerializeField] float distance = 10f;
+    [SerializeField] float angle = 60f;
+    [SerializeField] float height = 2f;
+
     NavMeshAgent agent;
     Animator anim;
     Node root;
@@ -41,7 +46,7 @@ public class MonsterBehaviourTreeComponent : MonoBehaviour
         {
             new Sequence(new List<Node>()
             {
-                new IsInPOV(target,transform,anim),
+                new IsInPOV(target,transform,anim,height,angle,distance),
                 new GoToTarget(target,agent)
             }),
             new placeHolder(),
@@ -55,7 +60,7 @@ public class MonsterBehaviourTreeComponent : MonoBehaviour
         {
             new Sequence(new List<Node>()
             {
-                new IsInPOV(target,transform,anim),
+                new IsInPOV(target,transform,anim,height,angle,distance),
                 new GoToTarget(target,agent)
             }),
             new GoToTargetPriority(Ptarget,agent,anim), // mets le joueur en priority
@@ -71,7 +76,7 @@ public class MonsterBehaviourTreeComponent : MonoBehaviour
             {
                 new Sequence(new List<Node>()
                 {
-                    new IsInPOV(target,transform,anim),
+                    new IsInPOV(target,transform,anim,height,angle,distance),
                     new GoToTarget(target,agent)
                 }),
                 new GoToTargetPriority(Ptarget,agent,anim),
@@ -84,7 +89,7 @@ public class MonsterBehaviourTreeComponent : MonoBehaviour
             {
                 new Sequence(new List<Node>()
                 {
-                    new IsInPOV(target,transform,anim),
+                    new IsInPOV(target,transform,anim,height,angle,distance),
                     new GoToTarget(target,agent)
                 }),
                 new GoToTargetPriority(Ptarget,agent,anim),

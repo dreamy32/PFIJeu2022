@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.44
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.24909106, g: 0.25450397, b: 0.23886842, a: 0.44}
+  m_IndirectSpecularColor: {r: 0.24909079, g: 0.25450367, b: 0.23886824, a: 0.44}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -14373,8 +14373,6 @@ MonoBehaviour:
   angle: 30
   height: 2
   meshColor: {r: 1, g: 0, b: 0, a: 1}
-  prey: []
-  waitTime: 2
 --- !u!114 &602247156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14410,6 +14408,9 @@ MonoBehaviour:
   waitTime: 2
   runningSpeed: 5
   walkingSpeed: 3.5
+  distance: 10
+  angle: 60
+  height: 2
 --- !u!95 &602247157
 Animator:
   serializedVersion: 4
@@ -26777,8 +26778,6 @@ MonoBehaviour:
   angle: 60
   height: 1
   meshColor: {r: 1, g: 0, b: 0, a: 1}
-  prey: []
-  waitTime: 2
 --- !u!114 &1109740729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26814,6 +26813,9 @@ MonoBehaviour:
   waitTime: 2
   runningSpeed: 4
   walkingSpeed: 2
+  distance: 10
+  angle: 60
+  height: 2
 --- !u!1001 &1110235626
 PrefabInstance:
   m_ObjectHideFlags: 0
