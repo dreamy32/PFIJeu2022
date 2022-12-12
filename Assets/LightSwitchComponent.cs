@@ -38,7 +38,6 @@ public class LightSwitchComponent : InteractableObject
         switchState = lightComponent.GetState();
         //Set the state of the switch by the animator on Awake
         _animator.SetTrigger(OnAwakeTrigger);
-        _onAwake = false;
     }
 
     protected override void Start()
@@ -69,10 +68,14 @@ public class LightSwitchComponent : InteractableObject
         switchState = true;
         _audioSource.clip = turnOnSound;
         lightComponent.Toggle(switchState);
-        _audioSource.Play();
         //
         if (_onAwake)
+        {
+            _onAwake = false;
             _animator.ResetTrigger(OnAwakeTrigger);
+            return;
+        }
+        _audioSource.Play();
     }
 
     public void InteractAnimEventOff()
@@ -80,10 +83,14 @@ public class LightSwitchComponent : InteractableObject
         switchState = false;
         _audioSource.clip = turnOffSound;
         lightComponent.Toggle(switchState);
-        _audioSource.Play();
         //
         if (_onAwake)
+        {
+            _onAwake = false;
             _animator.ResetTrigger(OnAwakeTrigger);
+            return;
+        }
+        _audioSource.Play();
     }
 
     public static List<LightSwitchComponent> GetLightSwitches()
