@@ -12,8 +12,7 @@ public enum PlayerSanity
 [RequireComponent(typeof(AudioSource))]
 public class SanitySystem : MonoBehaviour
 {
-    [Header("Sounds")] 
-    [SerializeField] private AudioClip[] scarySounds;
+    [Header("Sounds")] [SerializeField] private AudioClip[] scarySounds;
     [SerializeField] float audioSanityLost = 0.15f;
     private AudioSource _audioSource;
 
@@ -50,11 +49,13 @@ public class SanitySystem : MonoBehaviour
         _staticSanityBar = null;
         InTheDark = true;
     }
+
     private void Update()
     {
         _sanityLevel = GetPlayerSanity();
         ControlSanity();
     }
+
     #region Sanity
 
     private void ControlSanity()
@@ -72,10 +73,10 @@ public class SanitySystem : MonoBehaviour
         //        //PlayRandomSound();
         //        break;
         //    case PlayerSanity.Scared:
-               
+
         //        break;
         //    case PlayerSanity.Insane:
-                
+
         //        break;
         //}
     }
@@ -111,7 +112,7 @@ public class SanitySystem : MonoBehaviour
     }
 
     #endregion
-    
+
     private PlayerSanity GetPlayerSanity()
     {
         if (_currentSanity <= 0.5f)
@@ -136,7 +137,7 @@ public class SanitySystem : MonoBehaviour
         int multiple = 2;
         while (true)
         {
-            if(Random.Range(0, maxValueRandom) % multiple == 0)
+            if (Random.Range(0, maxValueRandom) % multiple == 0)
             {
                 IncreaseSanity(true);
 
