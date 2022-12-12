@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -40,7 +41,14 @@ public class LightComponent : MonoBehaviour
     }
     private void Reset()
     {
+        triggeringMask = LayerMask.GetMask("Player");
         GetComponent<BoxCollider>().isTrigger = true;
+        materialOn =
+            AssetDatabase.LoadAssetAtPath<Material>(
+                "Assets/Resources/Dnk_Dev/HospitalHorrorPack/Models/Materials/Mat_Lamp.mat");
+        materialOff =
+            AssetDatabase.LoadAssetAtPath<Material>(
+                "Assets/Resources/Dnk_Dev/HospitalHorrorPack/Models/Materials/Mat_Lamp_Off.mat");
     }
     private void Start()
     {
