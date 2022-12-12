@@ -7589,7 +7589,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f6d13920ebabff489888c6fc64afc06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPos: {fileID: 0}
+  playerPos: {fileID: 511188569}
+  monster: {fileID: 1109740729}
+  distance: 10
 --- !u!1001 &340276936
 PrefabInstance:
   m_ObjectHideFlags: 0
