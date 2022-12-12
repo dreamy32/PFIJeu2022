@@ -39,6 +39,11 @@ public class SanitySystem : MonoBehaviour
     {
         inTheDark = value;
     }
+    private void OnDestroy()
+    {
+        currentSanity = 0;
+        staticSanityBar = null;
+    }
 
     #region Sanity
     private void ControlSanity()
