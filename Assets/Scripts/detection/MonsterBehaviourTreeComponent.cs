@@ -12,6 +12,8 @@ public class MonsterBehaviourTreeComponent : MonoBehaviour
     [SerializeField] Transform[] destinations; // aile gauche
     [SerializeField] Transform[] altDestinations; // aile droit
     [SerializeField] float waitTime = 2;
+    [SerializeField] float runningSpeed = 5;
+    [SerializeField] float walkingSpeed = 3.5f;
     NavMeshAgent agent;
     Animator anim;
     Node root;
@@ -88,7 +90,14 @@ public class MonsterBehaviourTreeComponent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (anim.GetBool("IsCrawlingFast"))
+        {
+            agent.speed = runningSpeed;
+        }
+        else
+        {
+            agent.speed = walkingSpeed;
+        }
 
         root.Evaluate();
     }
