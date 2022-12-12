@@ -11,7 +11,8 @@ public class LightComponent : MonoBehaviour
     [Header("The object looks for the 'Lights' in his children.")]
     [SerializeField, Tooltip("If checked, lights will be turned on Awake.")]
     private bool state;
-    [SerializeField]  LayerMask triggeringMask;
+
+    [SerializeField] LayerMask triggeringMask;
 
     [Header("Materials")]
     //
@@ -39,37 +40,38 @@ public class LightComponent : MonoBehaviour
             Flick(time, flickDuration);
         Toggle(state);
     }
+
     private void Reset()
     {
         triggeringMask = LayerMask.GetMask("Player");
         GetComponent<BoxCollider>().isTrigger = true;
         materialOn =
-            AssetDatabase.LoadAssetAtPath<Material>(
-                "Assets/Resources/Dnk_Dev/HospitalHorrorPack/Models/Materials/Mat_Lamp.mat");
+            Resources.Load<Material>(
+                "Dnk_Dev/HospitalHorrorPack/Models/Materials/Mat_Lamp");
         materialOff =
-            AssetDatabase.LoadAssetAtPath<Material>(
-                "Assets/Resources/Dnk_Dev/HospitalHorrorPack/Models/Materials/Mat_Lamp_Off.mat");
+            Resources.Load<Material>(
+                "Dnk_Dev/HospitalHorrorPack/Models/Materials/Mat_Lamp_Off");
     }
 
     private void OnDestroy()
     {
         instances = null;
     }
+
     private void OnTriggerEnter(Collider other)
     {
-
         if (GameTools.CompareLayers(triggeringMask, other.gameObject.layer))
             SanitySystem.InTheDark = !state;
-
     }
+
     private void OnTriggerStay(Collider other)
     {
-
-        if (GameTools.CompareLayers(triggeringMask, other.gameObject.layer) )
+        if (GameTools.CompareLayers(triggeringMask, other.gameObject.layer))
             SanitySystem.InTheDark = !state;
 
         Debug.Log(PlayerComponent.FlashlightIsOn);
     }
+
     private void OnTriggerExit(Collider other)
     {
         if (GameTools.CompareLayers(triggeringMask, other.gameObject.layer))
@@ -91,6 +93,7 @@ public class LightComponent : MonoBehaviour
                 $"Can't pursue action because there is no power. Try affecting the state to {nameof(GameManager.GlobalPowerState)} instead or set {nameof(ignoreGlobalPstate)} to true.");
             return;
         }
+
         this.state = state;
         //Jouer un son ?
         for (var i = 0; i < _lights.Length; i++)
