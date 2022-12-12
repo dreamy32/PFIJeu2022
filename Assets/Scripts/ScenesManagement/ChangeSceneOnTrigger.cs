@@ -15,7 +15,8 @@ public class ChangeSceneOnTrigger : MonoBehaviour
             Debug.Log("Loading progress: " + (asyncLoad.progress * 100) + "%");
             if (asyncLoad.progress >= 0.9f)
             {
-                
+                Cursor.lockState = CursorLockMode.None;
+                Debug.Log("ouinon");
                 asyncLoad.allowSceneActivation = true;
                 yield break;
             }
@@ -25,7 +26,7 @@ public class ChangeSceneOnTrigger : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "EndGame")
+        if (other.gameObject.tag == "End")
         {
             StartCoroutine(nameof(LoadScene));
         }
