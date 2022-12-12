@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Molson : InteractableObject
+﻿public class Molson : InteractableObject
 {
     protected override void Awake()
     {

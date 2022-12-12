@@ -1,15 +1,14 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class SkipIntro : MonoBehaviour
 {
-    [SerializeField] Text skipText;
-    [SerializeField] string sceneToLoad;
-    [SerializeField] Text endOfIntro;
+    [SerializeField] private Text skipText;
+    [SerializeField] private string sceneToLoad;
+    [SerializeField] private Text endOfIntro;
 
-    static public bool allowActivation;
+    public static bool AllowActivation;
     private void Awake()
     {
         skipText.gameObject.SetActive(false);
@@ -32,7 +31,6 @@ public class SkipIntro : MonoBehaviour
                 yield break;
             }
         }
-
         yield return null;
     }
 }

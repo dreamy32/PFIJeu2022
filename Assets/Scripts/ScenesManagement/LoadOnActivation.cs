@@ -9,8 +9,8 @@ public class LoadOnActivation : MonoBehaviour
     void Start()
     {
         // Je sais...
-        SkipIntro.allowActivation = true;
-        Debug.Log(SkipIntro.allowActivation);
+        SkipIntro.AllowActivation = true;
+        Debug.Log(SkipIntro.AllowActivation);
     }
 
 }

@@ -1,13 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerComponent : MonoBehaviour
 {
     private FlashlightComponent _flashlightComponent;
-    public static bool flashlightIsOn;
+    public static bool FlashlightIsOn;
     private void Awake()
     {
         _flashlightComponent = GetComponentInChildren<FlashlightComponent>(true);
@@ -18,9 +15,9 @@ public class PlayerComponent : MonoBehaviour
         if (ctx.performed && _flashlightComponent.gameObject.activeInHierarchy)
         {
 
-            flashlightIsOn = _flashlightComponent.ToggleFlashlight();
-            flashlightIsOn = true;
+            FlashlightIsOn = _flashlightComponent.ToggleFlashlight();
+            FlashlightIsOn = true;
         }
-        flashlightIsOn = false;
+        FlashlightIsOn = false;
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -21,20 +20,19 @@ public abstract class InteractableObject : MonoBehaviour
     private bool _canInteract;
     private bool _isTriggered;
     protected RaycastHit RaycastHit;
-
     private SphereCollider _triggerCollider;
 
+    //The interactable objects found in its children and itself
     private List<GameObject> _interactableObjects;
+    private Outline[] _outlines;
 
-    //
-    private Outline[] _outlines; //Peut avoir plus que un outline
-
-    //
+    ////Was supposed to be used by the Vault Doorsupposé. When true, can only interact one time.
     protected bool SingleUsage = false;
     private bool _hasBeenUsed = false;
 
     protected virtual void Awake()
     {
+        //
         _interactableObjects = new List<GameObject>();
         if (CompareTag(InteractionManager.InteractionTag))
             _interactableObjects.Add(gameObject);

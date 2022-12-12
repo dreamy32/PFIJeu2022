@@ -1,48 +1,48 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SmallDoorComponent : InteractableObject
 {
     private Animator _animator;
-    bool isOpen;
-    private AudioSource audio;
+    private bool _isOpen;
+    private AudioSource _audio;
+    
+    [Header("AudioClips")]
+    [SerializeField] private AudioClip openingSound;
+    [SerializeField] private AudioClip closingSound;
 
-    [SerializeField] AudioClip openingSound;
-    [SerializeField] AudioClip closingSound;
-
-    //private static readonly int OpenTrigger = Animator.StringToHash("Open");
+    private static readonly int OpenTrigger = Animator.StringToHash("Open");
+    private static readonly int CloseTrigger = Animator.StringToHash("Close");
     protected override void Awake()
     {
         //InteractableObject attributes
         base.Awake();
         SingleUsage = false; //�viter de call l'animator pour rien
-        isOpen = false;
+        _isOpen = false;
         _animator = GetComponent<Animator>();
-        audio = GetComponent<AudioSource>();
+        _audio = GetComponent<AudioSource>();
     }
     private void PlaySound(AudioClip clip)
     {
-        audio.clip = clip;
-        audio.Play();
+        _audio.clip = clip;
+        _audio.Play();
     }
     protected override void OnInteract()
     {
-        if (!isOpen)
+        if (!_isOpen)
         {
             PlaySound(openingSound);
 
-            _animator.SetTrigger("Open");
-            _animator.ResetTrigger("Close");
-            isOpen = true;
+            _animator.SetTrigger(OpenTrigger);
+            _animator.ResetTrigger(CloseTrigger);
+            _isOpen = true;
         }
         else
         {
             PlaySound(closingSound);
 
-            _animator.SetTrigger("Close");
-            _animator.ResetTrigger("Open");
-            isOpen = false;
+            _animator.SetTrigger(CloseTrigger);
+            _animator.ResetTrigger(OpenTrigger);
+            _isOpen = false;
         }
     }
 }

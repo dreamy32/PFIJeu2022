@@ -1,15 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 public class HidingCam : MonoBehaviour
 {
-    [SerializeField] Camera hidingCam;
-    [SerializeField] float sensitivity = 50f;
-    [SerializeField] float minAngle = -45.0f;
-    [SerializeField] float maxAngle = 45.0f;
+    [SerializeField] private Camera hidingCam;
+    [SerializeField] private float sensitivity = 50f;
+    [SerializeField] private float minAngle = -45.0f;
+    [SerializeField] private float maxAngle = 45.0f;
 
-    private float rotationValue;
+    private float _rotationValue;
 
 
     private void Awake()
@@ -22,9 +19,9 @@ public class HidingCam : MonoBehaviour
         if (hidingCam.enabled)
         {
             //Rotate view
-            rotationValue += Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
-            rotationValue = Mathf.Clamp(rotationValue, minAngle, maxAngle);
-            hidingCam.transform.parent.localRotation = Quaternion.Euler(0, 0, rotationValue);
+            _rotationValue += Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
+            _rotationValue = Mathf.Clamp(_rotationValue, minAngle, maxAngle);
+            hidingCam.transform.parent.localRotation = Quaternion.Euler(0, 0, _rotationValue);
         }
     }
 }

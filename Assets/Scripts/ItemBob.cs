@@ -1,30 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+//This script makes the item sway when the player moves the camera
 public class ItemBob : MonoBehaviour
 {
-    // a modifier afin que le code fonctionne avec player input ainsi que s'assurer de ne pas overcall des methodes de verification pour rien
+    //Amount of sway, maximum amount of sway, and the smoothness of the sway
+    [SerializeField] private float
+        amount,
+        maxAmount,
+        smoothAmount;
 
-    [SerializeField] float amount,maxAmount,smoothAmount;
+    //Amount of rotation, maximum rotation, and smoothness of the rotation
+    [SerializeField] private float
+        rotationAmount,
+        maxRotationAmount,
+        smoothRotation;
 
-    [SerializeField] float rotationAmount, maxRotationAmount, smoothRotation;
+    //Initial transform values
+    private Vector3 _initialPos; 
+    private Quaternion _initiaRotation;
 
-    private Vector3 initialPos;
-    private Quaternion initiaRotation;
-
-    private float movementX, movementY;
+    //Variables to keep track of the player's mouse movements in the X and Y direction
+    private float _movementX, _movementY;
 
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        initialPos = transform.localPosition;
-        initiaRotation = transform.localRotation;
+        _initialPos = transform.localPosition;
+        _initiaRotation = transform.localRotation;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         CalculateSway();
 
@@ -32,27 +37,52 @@ public class ItemBob : MonoBehaviour
         TiltSway();
     }
 
+    //Calculating the sway of the item
     private void CalculateSway()
     {
-        movementX = Input.GetAxis("Mouse X");
-        movementY = Input.GetAxis("Mouse Y");
+        _movementX = Input.GetAxis("Mouse X");
+        _movementY = Input.GetAxis("Mouse Y");
     }
+
+    //Moving the item based on the sway
     private void MoveSway()
     {
-        float moveX = Mathf.Clamp(movementX * amount, -maxAmount, maxAmount);
-        float moveY = Mathf.Clamp(movementY * amount, -maxAmount, maxAmount);
+        //Calculating the amount of sway on the X and Y axis
+        float moveX =
+            Mathf.Clamp(_movementX * amount, -maxAmount, maxAmount);
+        float moveY =
+            Mathf.Clamp(_movementY * amount, -maxAmount, maxAmount);
 
+        //Creating a vector3 to store the final position of the item
         Vector3 finalPos = new Vector3(moveX, moveY, 0);
 
-        transform.localPosition = Vector3.Lerp(transform.localPosition, finalPos + initialPos, Time.deltaTime * smoothAmount);
+        //Moving the item to the final position calculated above
+        transform.localPosition = Vector3.Lerp(
+            transform.localPosition,
+            finalPos + _initialPos,
+            Time.deltaTime * smoothAmount
+        );
     }
+
+    //Tilting the item based on the sway
     private void TiltSway()
     {
-        float tiltY = Mathf.Clamp(movementX * rotationAmount, -maxRotationAmount, maxRotationAmount);
-        float tiltX = Mathf.Clamp(movementY * rotationAmount, -maxRotationAmount, maxRotationAmount);
+        //Calculating the amount of rotation on the X and Y axis
+        float tiltY =
+            Mathf.Clamp(_movementX * rotationAmount, -maxRotationAmount,
+                maxRotationAmount);
+        float tiltX =
+            Mathf.Clamp(_movementY * rotationAmount, -maxRotationAmount,
+                maxRotationAmount);
 
-        Quaternion finalRotation = Quaternion.Euler(new Vector3(tiltY,tiltX,0));
+        //Creating a quaternion to store the final rotation
+        Quaternion finalRotation = Quaternion.Euler(new Vector3(tiltY, tiltX, 0));
 
-        transform.localRotation = Quaternion.Slerp(transform.localRotation, finalRotation * initiaRotation, Time.deltaTime * smoothRotation);
+        //Rotating the item to the final rotation calculated above
+        transform.localRotation = Quaternion.Slerp(
+            transform.localRotation,
+            finalRotation * _initiaRotation,
+            Time.deltaTime * smoothRotation
+        );
     }
 }

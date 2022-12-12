@@ -1,16 +1,14 @@
-using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(LightComponent), typeof(ItemBob), typeof(AudioSource))]
 public class FlashlightComponent : MonoBehaviour
 {
     private LightComponent _lightComponent;
     private AudioSource _audioSource;
-    private AudioClip _audioClip;
-    [Header("Audio")] [SerializeField] private AudioClip turnOnSound;
+    [Header("Audio")] 
+    [SerializeField] private AudioClip turnOnSound;
     [SerializeField] private AudioClip turnOffSound;
-    private bool state;
+    private bool _state;
 
     private void Awake()
     {
@@ -18,15 +16,16 @@ public class FlashlightComponent : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
         //
         _lightComponent.toggleOnStart = false;
-        // state = _lightComponent.GetState();
     }
     
     public bool ToggleFlashlight()
     {
-        state = _lightComponent.GetState();
-        _audioClip = state ? turnOnSound : turnOffSound;
-        _lightComponent.Toggle(!state, true);
+        _state = _lightComponent.GetState();
+        _lightComponent.Toggle(!_state, true);
+        //
+        _audioSource.clip = _state ? turnOnSound : turnOffSound;
         _audioSource.Play();
-        return state;
+        //
+        return _state;
     }
 }

@@ -1,57 +1,51 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Physics")]
-    [SerializeField] float walkSpeed = 3f;
-    [SerializeField] float sprintSpeed = 6f;
-    [SerializeField] float gravity = -9.81f; // The numerical value for the acceleration of gravity
-    [SerializeField] float jumpForce = 10f;
+    [Header("Physics")] [SerializeField] private float walkSpeed = 3f;
+    [SerializeField] private float sprintSpeed = 6f;
+    [SerializeField] private float gravity = -9.81f; // The numerical value for the acceleration of gravity
+
+    [Header("Crouching")] [SerializeField] private float crouchingHeight = 0.5f;
+    [SerializeField] private Transform topRaycastLocation;
 
 
-    [Header("Sounds")]
-    [SerializeField] SoundManager soundManager;
-    [SerializeField] AudioClip footsteps;
-    AudioSource soundSource;
+    private float _speed;
+    private float _defaultSpeed;
+    private float _defaultGravity;
+    private float _defaultHeight;
+    private Vector3 _velocity;
 
-    [Header("Crouching")]
-    [SerializeField] float crouchingHeight = 0.5f;
-    [SerializeField] Transform topRaycastLocation;
+    private bool _isRunning = false;
+    private bool _isGrounded = true;
+    private bool _isCrouching = false;
 
-
-    private float speed;
-    private float defaultSpeed;
-    private float defaultGravity;
-    private float defaultHeight;
-
-    bool isRunning = false;
-    bool isGrounded = true;
-    bool isMoving = false;
-    private bool isCrouching = false;
-
-    private GameObject eyes;
-    private Animator camAnim;
-    private CharacterController controller;
-    private Vector3 velocity;
+    private CharacterController _controller;
+    private GameObject _eyes;
+    private Animator _camAnim;
+    private AudioSource _soundSource;
     
+    //Animator parameters
+    private static readonly int IsWalking = Animator.StringToHash("isWalking");
+    private static readonly int IsIdle = Animator.StringToHash("isIdle");
 
-    void Awake()
+
+    private void Awake()
     {
-        soundSource = GetComponent<AudioSource>();
-        speed = walkSpeed;
-        controller = GetComponent<CharacterController>();
-        defaultHeight = controller.height;
-        eyes = transform.GetChild(0).gameObject;
-        camAnim = eyes.GetComponent<Animator>();
+        _soundSource = GetComponent<AudioSource>();
+        _speed = walkSpeed;
+        _controller = GetComponent<CharacterController>();
+        _defaultHeight = _controller.height;
+        _eyes = transform.GetChild(0).gameObject;
+        _camAnim = _eyes.GetComponent<Animator>();
     }
+
     private void Update()
     {
-        // Vector3 forward = Camera.main.transform.forward * 10;
-        // Debug.DrawRay(Camera.main.transform.position, forward, Color.green);
-        isGrounded = controller.isGrounded;
+        if (_isGrounded != _controller.isGrounded)
+            _isGrounded = _controller.isGrounded;
     }
 
 
@@ -59,81 +53,66 @@ public class PlayerMovement : MonoBehaviour
     {
         if (input != new Vector2(0, 0))
         {
-            soundSource.pitch = isRunning ? 1.18f : 1;
-            isMoving = true;
-            camAnim.SetBool("isWalking", true);
-            soundSource.enabled = true;
-            
-        } 
+            _soundSource.pitch = _isRunning ? 1.18f : 1;
+            _camAnim.SetBool(IsWalking, true);
+            _soundSource.enabled = true;
+        }
         else
         {
-            
-            camAnim.SetBool("isWalking", false);
-            camAnim.SetBool("isIdle", true);
-            soundSource.enabled = false ;
+            _camAnim.SetBool(IsWalking, false);
+            _camAnim.SetBool(IsIdle, true);
+            _soundSource.enabled = false;
         }
-          
 
 
+        Vector3 direction = new Vector3(input.x, 0, input.y);
+        _controller.Move(transform.TransformDirection(direction) * (_speed * Time.deltaTime));
+        _velocity.y += gravity * Time.deltaTime;
 
-        Vector3 direction = new Vector3(input.x,  0, input.y);
-        controller.Move(transform.TransformDirection(direction) * speed * Time.deltaTime);
-        velocity.y += gravity * Time.deltaTime;
-
-        if (isGrounded && velocity.y < 0)
-            velocity.y = -2f;
-
+        if (_isGrounded && _velocity.y < 0)
+            _velocity.y = -2f;
 
         // The player will jump or fall, depending on the value of the velocity
-        controller.Move(velocity * Time.deltaTime);
+        _controller.Move(_velocity * Time.deltaTime);
     }
+
     public void Sprint(InputAction.CallbackContext ctx)
     {
-        if (!isCrouching)
+        if (!_isCrouching)
         {
             if (ctx.performed)
-                isRunning = true;
-
+                _isRunning = true;
 
             else if (ctx.canceled)
-                isRunning = false;
-            speed = isRunning ? sprintSpeed : walkSpeed;
+                _isRunning = false;
+            _speed = _isRunning ? sprintSpeed : walkSpeed;
         }
-        
     }
 
-    // An event that is invoked when pressing space
-    public void Jump(bool fromJumpPad = false)
+    public void Crouch(InputAction.CallbackContext ctx)
     {
-        if (isGrounded)
+        if (ctx.performed)
         {
-            this.velocity.y = jumpForce;
-        }
-    }
-
-    public void Crouch()
-    {
-       
-            if (!isCrouching && controller.isGrounded &&!isRunning) // if standing up
+            if (!_isCrouching && _controller.isGrounded && !_isRunning) // if standing up
             {
                 CrouchMovement();
             }
             else // if crouching
             {
-                controller.height = defaultHeight;
-                isCrouching = false;
+                _controller.height = _defaultHeight;
+                _isCrouching = false;
             }
-        
+        }
     }
 
     private void CrouchMovement()
     {
-        controller.height = crouchingHeight;
-        isCrouching = true;
+        _controller.height = crouchingHeight;
+        _isCrouching = true;
     }
+
     private bool CanStandUp()
     {
-        //return !rayCast.ObjRay.
         return !Physics.Raycast(topRaycastLocation.position, topRaycastLocation.up, out RaycastHit hit, 2);
     }
 }

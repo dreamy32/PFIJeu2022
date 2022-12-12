@@ -10,7 +10,7 @@ public class HideOnInteract : InteractableObject
     //
     private AudioListener _audioListener;
     //
-    private Transform player;
+    private Transform _camTransform;
     protected override void Awake()
     {
         base.Awake();
@@ -22,17 +22,17 @@ public class HideOnInteract : InteractableObject
     {
         hidingCam.enabled = false;
         hideCanvas.gameObject.SetActive(false);
-        player.gameObject.SetActive(true);
+        _camTransform.gameObject.SetActive(true);
         _audioListener.enabled = false;
     }
     protected override void OnInteract()
     {
-        player = Camera.main.transform.root;
+        _camTransform = Camera.main.transform.root;
         //
 
         
         hidingCam.enabled = true;
-        player.gameObject.SetActive(false);
+        _camTransform.gameObject.SetActive(false);
         _audioListener.enabled = true;
         hideCanvas.gameObject.SetActive(true);
         StartCoroutine(nameof(ExitHide));

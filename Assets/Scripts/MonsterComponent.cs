@@ -1,32 +1,34 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-
-[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(NavMeshAgent), typeof(Animator), typeof(Rigidbody))]
 public class EnemyComponent : MonoBehaviour
 {
+    //Custom Event
     public delegate void OnGrabAction();
-
     public event OnGrabAction OnGrab;
+    
+    //The player to follow
     [SerializeField] private GameObject player;
+    
+    //
     private NavMeshAgent _navMeshA;
-    Animator animator;
-    Rigidbody rb;
+    private Animator _animator;
+    private Rigidbody _rb;
+    
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
+        _rb = GetComponent<Rigidbody>();
+        _navMeshA = GetComponent<NavMeshAgent>();
+    }
 
-    //Unity Event
     private void OnCollisionEnter(Collision c)
     {
         if (player.layer.Equals(c.gameObject.layer))
         {
             Grab();
         }
-    }
-
-    private void Awake()
-    {
-        animator = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody>();
-        _navMeshA = GetComponent<NavMeshAgent>();
     }
 
     private void Update()

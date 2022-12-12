@@ -1,11 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class InteractionManager : MonoBehaviour
 {
+    //Custom Event
+    public delegate void InteractAction();
+    public static event InteractAction OnInteract;
     //
     [SerializeField] private UnityEngine.UI.Image iconPlaceholder;
     public static UnityEngine.UI.Image IconPlaceholder;
@@ -15,11 +15,6 @@ public class InteractionManager : MonoBehaviour
     {
         IconPlaceholder = iconPlaceholder;
     }
-
-    //
-    public delegate void InteractAction();
-
-    public static event InteractAction OnInteract;
 
     //
     public void Interact(InputAction.CallbackContext ctx)

@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,9 +15,7 @@ public class LightSwitchComponent : InteractableObject
     private Animator _animator;
 
     private AudioSource _audioSource;
-    private Outline _outline;
 
-    private AudioClip _audioClip;
     private static readonly int IsOn = Animator.StringToHash("isOn");
 
     public bool switchState;
@@ -34,7 +30,6 @@ public class LightSwitchComponent : InteractableObject
         //
         _animator = GetComponent<Animator>();
         _audioSource = GetComponent<AudioSource>();
-        _outline = GetComponent<Outline>();
         //
         switchState = lightComponent.GetState();
         _animator.SetBool(IsOn, switchState);
@@ -53,7 +48,7 @@ public class LightSwitchComponent : InteractableObject
     public void InteractAnimEventOn()
     {
         switchState = true;
-        _audioClip = turnOnSound;
+        _audioSource.clip = turnOnSound;
         lightComponent.Toggle(switchState);
         _audioSource.Play();
     }
@@ -61,7 +56,7 @@ public class LightSwitchComponent : InteractableObject
     public void InteractAnimEventOff()
     {
         switchState = false;
-        _audioClip = turnOffSound;
+        _audioSource.clip = turnOffSound;
         lightComponent.Toggle(switchState);
         _audioSource.Play();
     }
