@@ -107,7 +107,7 @@ public abstract class InteractableObject : MonoBehaviour
     {
         GetComponent<SphereCollider>().isTrigger = true;
     }
-    
+
     protected virtual void Update()
     {
         if (!_hasBeenUsed)
@@ -119,8 +119,7 @@ public abstract class InteractableObject : MonoBehaviour
                 var camTransform = Camera.main.transform;
                 if (Physics.Raycast(camTransform.position, camTransform.forward, out var hit))
                 {
-                    _canInteract = _interactableObjects.Contains(hit.collider.gameObject) &&
-                                   hit.collider != _triggerCollider;
+                    _canInteract = _interactableObjects.Contains(hit.collider.gameObject) && !hit.collider.isTrigger;
                     ToggleInfo(_canInteract);
                 }
                 else
