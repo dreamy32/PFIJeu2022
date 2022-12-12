@@ -303,6 +303,12 @@ public class BehaviorTree
                 return NodeState.Failure;
             }
 
+            if (Vector3.Distance(origine,destination) >= distance)
+            {
+                anim.SetBool("IsCrawling", true);
+                return NodeState.Failure;
+            }
+
             direction.y = 0;
             float deltaAngle = Vector3.Angle(direction, self.forward);
             //Debug.Log(deltaAngle);

@@ -6762,7 +6762,7 @@ Transform:
   m_GameObject: {fileID: 1867159188}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.9713, y: 0.14, z: -11.77}
-  m_LocalScale: {x: 2.2021, y: 2.2021, z: 2.2021}
+  m_LocalScale: {x: 5.599739, y: 5.599739, z: 5.599739}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -7111,6 +7111,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cible: {fileID: 511188569}
+  waitTime: 10
+  time: 0
   monstre: {fileID: 0}
 --- !u!1001 &2063322721
 PrefabInstance:
