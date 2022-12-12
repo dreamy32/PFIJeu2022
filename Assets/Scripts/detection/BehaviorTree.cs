@@ -277,7 +277,7 @@ public class BehaviorTree
         Transform target;
         Transform self;
         Animator anim;
-        public IsInPOV(Transform target, Transform self,Animator anim, float height = 2, float angle = 30, float distance = 10)
+        public IsInPOV(Transform target, Transform self,Animator anim, float height = 2, float angle = 60, float distance = 10)
         {
             this.height = height;
             this.angle = angle;
@@ -300,6 +300,7 @@ public class BehaviorTree
             {
                 //Debug.Log("hauteur");
                 anim.SetBool("IsCrawling", true);
+
                 return NodeState.Failure;
             }
 
