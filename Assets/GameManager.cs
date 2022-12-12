@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
                 //If the global power state is on
                 if (value)
                 {
+                    var isSwitchFound = false;
                     //Iterate through all light switch components
                     foreach (var lightSwitch in _lightSwitchComponents)
                     {
@@ -41,11 +42,12 @@ public class GameManager : MonoBehaviour
                         {
                             //Toggle the light according to the switch state
                             light.Toggle(lightSwitch.switchState, true);
+                            isSwitchFound = true;
                         }
-                        else
-                            //Toggle the light according to the global power state
-                            light.Toggle(value, true);
                     }
+                    if (!isSwitchFound)
+                        //Toggle the light according to the global power state
+                        light.Toggle(value, true);
                 }
                 else
                     //Toggle the light according to the global power state (always false)
