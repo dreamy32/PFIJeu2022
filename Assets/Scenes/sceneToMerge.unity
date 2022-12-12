@@ -1072,6 +1072,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightSwitch (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5044361062688624961, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5906659797496476285, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1116,6 +1120,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9060578714510315064, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
+      propertyPath: turnOnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b0e5de8cb5b81424f9c8a216c28cada9, type: 3}
     - target: {fileID: 9060578714510315064, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
       propertyPath: lightComponent
       value: 
@@ -4235,6 +4243,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightSwitch (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5044361062688624961, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5906659797496476285, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -4279,6 +4291,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9060578714510315064, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
+      propertyPath: turnOnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b0e5de8cb5b81424f9c8a216c28cada9, type: 3}
     - target: {fileID: 9060578714510315064, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
       propertyPath: lightComponent
       value: 
@@ -5034,7 +5050,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-142668
+  m_Name: pb_Mesh-8298
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5989,6 +6005,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5044361062688624961, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5906659797496476285, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -6033,6 +6053,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9060578714510315064, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
+      propertyPath: turnOnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b0e5de8cb5b81424f9c8a216c28cada9, type: 3}
     - target: {fileID: 9060578714510315064, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
       propertyPath: lightComponent
       value: 
@@ -9760,7 +9784,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-143622
+  m_Name: pb_Mesh-9236
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11772,6 +11796,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightSwitch
       objectReference: {fileID: 0}
+    - target: {fileID: 5044361062688624961, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5906659797496476285, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -11816,6 +11844,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9060578714510315064, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
+      propertyPath: turnOnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b0e5de8cb5b81424f9c8a216c28cada9, type: 3}
     - target: {fileID: 9060578714510315064, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
       propertyPath: lightComponent
       value: 
@@ -15608,7 +15640,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   lightComponent: {fileID: 708760889}
-  turnOnSound: {fileID: 0}
+  turnOnSound: {fileID: 8300000, guid: b0e5de8cb5b81424f9c8a216c28cada9, type: 3}
   turnOffSound: {fileID: 0}
   switchState: 1
 --- !u!65 &694800211
@@ -15648,7 +15680,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -18104,6 +18136,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightSwitch (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5044361062688624961, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5906659797496476285, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -18148,6 +18184,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9060578714510315064, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
+      propertyPath: turnOnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b0e5de8cb5b81424f9c8a216c28cada9, type: 3}
     - target: {fileID: 9060578714510315064, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
       propertyPath: lightComponent
       value: 
@@ -18366,7 +18406,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-142688
+  m_Name: pb_Mesh-8318
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -24156,6 +24196,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5044361062688624961, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5906659797496476285, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
       propertyPath: m_RootOrder
       value: 19
@@ -24200,6 +24244,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9060578714510315064, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
+      propertyPath: turnOnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b0e5de8cb5b81424f9c8a216c28cada9, type: 3}
     - target: {fileID: 9060578714510315064, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
       propertyPath: lightComponent
       value: 
@@ -25488,6 +25536,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5044361062688624961, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5906659797496476285, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -25532,6 +25584,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9060578714510315064, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
+      propertyPath: turnOnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b0e5de8cb5b81424f9c8a216c28cada9, type: 3}
     - target: {fileID: 9060578714510315064, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
       propertyPath: lightComponent
       value: 
@@ -26307,6 +26363,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5044361062688624961, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5906659797496476285, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -26351,6 +26411,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9060578714510315064, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
+      propertyPath: turnOnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b0e5de8cb5b81424f9c8a216c28cada9, type: 3}
     - target: {fileID: 9060578714510315064, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
       propertyPath: lightComponent
       value: 
@@ -31430,7 +31494,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh414936
+  m_Name: pb_Mesh27806
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -31919,7 +31983,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-142224
+  m_Name: pb_Mesh-7854
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -32721,6 +32785,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5044361062688624961, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5906659797496476285, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -32765,6 +32833,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9060578714510315064, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
+      propertyPath: turnOnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b0e5de8cb5b81424f9c8a216c28cada9, type: 3}
     - target: {fileID: 9060578714510315064, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
       propertyPath: lightComponent
       value: 
@@ -32956,7 +33028,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-146170
+  m_Name: pb_Mesh-11740
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -42077,7 +42149,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-143640
+  m_Name: pb_Mesh-9254
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -42725,7 +42797,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-142206
+  m_Name: pb_Mesh-7836
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -46958,7 +47030,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-146188
+  m_Name: pb_Mesh-11758
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -47185,6 +47257,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5044361062688624961, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5906659797496476285, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -47229,6 +47305,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9060578714510315064, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
+      propertyPath: turnOnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b0e5de8cb5b81424f9c8a216c28cada9, type: 3}
     - target: {fileID: 9060578714510315064, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
       propertyPath: lightComponent
       value: 
@@ -49237,6 +49317,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5044361062688624961, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5906659797496476285, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -49281,6 +49365,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9060578714510315064, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
+      propertyPath: turnOnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b0e5de8cb5b81424f9c8a216c28cada9, type: 3}
     - target: {fileID: 9060578714510315064, guid: 3194e55cab7127a498d111ff97340d94, type: 3}
       propertyPath: lightComponent
       value: 
@@ -50404,7 +50492,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   lightComponent: {fileID: 857191183}
-  turnOnSound: {fileID: 0}
+  turnOnSound: {fileID: 8300000, guid: b0e5de8cb5b81424f9c8a216c28cada9, type: 3}
   turnOffSound: {fileID: 0}
   switchState: 1
 --- !u!65 &2043061709
@@ -50444,7 +50532,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -50892,7 +50980,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   lightComponent: {fileID: 1001775507}
-  turnOnSound: {fileID: 0}
+  turnOnSound: {fileID: 8300000, guid: b0e5de8cb5b81424f9c8a216c28cada9, type: 3}
   turnOffSound: {fileID: 0}
   switchState: 1
 --- !u!65 &2051285570
@@ -50932,7 +51020,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

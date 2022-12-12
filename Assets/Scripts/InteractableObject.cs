@@ -109,7 +109,7 @@ public abstract class InteractableObject : MonoBehaviour
         }
     }
 
-    private void Reset()
+    protected virtual void Reset()
     {
         GetComponent<SphereCollider>().isTrigger = true;
     }

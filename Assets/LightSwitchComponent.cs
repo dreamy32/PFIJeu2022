@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator), typeof(AudioSource), typeof(Outline))]
@@ -51,6 +52,13 @@ public class LightSwitchComponent : InteractableObject
         instances = null;
     }
 
+    protected override void Reset()
+    {
+        base.Reset();
+        GetComponent<AudioSource>().playOnAwake = false;
+        turnOnSound = AssetDatabase.LoadAssetAtPath<AudioClip>("Assets/Audio/LightSwitch/lightswitch-on.ogg");
+
+    }
     protected override void OnInteract()
     {
         _animator.SetBool(IsOn, !switchState);
