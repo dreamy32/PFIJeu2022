@@ -15,7 +15,6 @@ public class FlashlightComponent : MonoBehaviour
         _lightComponent = GetComponent<LightComponent>();
         _audioSource = GetComponent<AudioSource>();
         //
-        _lightComponent.toggleOnStart = false;
     }
     
     public bool ToggleFlashlight()

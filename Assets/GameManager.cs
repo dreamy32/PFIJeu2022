@@ -27,7 +27,6 @@ public class GameManager : MonoBehaviour
             //Iterate through all the light components
             foreach (var light in _lightComponents)
             {
-                light.name = light.name;
                 //If the global power state is on
                 if (value)
                 {
