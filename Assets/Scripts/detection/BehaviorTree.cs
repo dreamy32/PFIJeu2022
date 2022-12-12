@@ -304,7 +304,7 @@ public class BehaviorTree
                 return NodeState.Failure;
             }
 
-            if (Vector3.Distance(origine,destination) >= distance)
+            if (Vector3.Distance(origine,destination) >= distance) // bonne distance
             {
                 anim.SetBool("IsCrawling", true);
                 return NodeState.Failure;
