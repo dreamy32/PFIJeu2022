@@ -5,34 +5,37 @@ using UnityEngine;
 using static BehaviorTree;
 
 [RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(Animator))]
 public class MonsterBehaviourTreeComponent : MonoBehaviour
 {
     [SerializeField] Transform target; // joueur
     [SerializeField] Transform[] destinations; // aile gauche
     [SerializeField] Transform[] altDestinations; // aile droit
     [SerializeField] float waitTime = 2;
-    [SerializeField] float detectionRange = 3;
     NavMeshAgent agent;
+    Animator anim;
     Node root;
     bool AileDroit = false;
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
         SetupTree();
     }
 
     private void SetupTree()
     {
+        
         root = new Selector(new List<Node>()
         {
             new Sequence(new List<Node>()
             {
-                new IsInPOV(target,transform),
+                new IsInPOV(target,transform,anim),
                 new GoToTarget(target,agent)
             }),
             new placeHolder(),
-            new PatrolTask(destinations,waitTime,agent)
+            new PatrolTask(destinations,waitTime,agent,anim)
         });
     }
 
@@ -42,11 +45,11 @@ public class MonsterBehaviourTreeComponent : MonoBehaviour
         {
             new Sequence(new List<Node>()
             {
-                new IsInPOV(target,transform),
+                new IsInPOV(target,transform,anim),
                 new GoToTarget(target,agent)
             }),
-            new GoToTargetPriority(Ptarget,agent), // mets le joueur en priority
-            new PatrolTask(altDestinations,waitTime,agent)
+            new GoToTargetPriority(Ptarget,agent,anim), // mets le joueur en priority
+            new PatrolTask(altDestinations,waitTime,agent,anim)
         });
     }
 
@@ -58,11 +61,11 @@ public class MonsterBehaviourTreeComponent : MonoBehaviour
             {
                 new Sequence(new List<Node>()
                 {
-                    new IsInPOV(target,transform),
+                    new IsInPOV(target,transform,anim),
                     new GoToTarget(target,agent)
                 }),
-                new GoToTargetPriority(Ptarget,agent),
-                new PatrolTask(altDestinations,waitTime,agent)
+                new GoToTargetPriority(Ptarget,agent,anim),
+                new PatrolTask(altDestinations,waitTime,agent,anim)
             });
         }
         else
@@ -71,11 +74,11 @@ public class MonsterBehaviourTreeComponent : MonoBehaviour
             {
                 new Sequence(new List<Node>()
                 {
-                    new IsInPOV(target,transform),
+                    new IsInPOV(target,transform,anim),
                     new GoToTarget(target,agent)
                 }),
-                new GoToTargetPriority(Ptarget,agent),
-                new PatrolTask(destinations,waitTime,agent)
+                new GoToTargetPriority(Ptarget,agent,anim),
+                new PatrolTask(destinations,waitTime,agent,anim)
             });
         }
 

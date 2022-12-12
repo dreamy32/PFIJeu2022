@@ -146,27 +146,34 @@ public class BehaviorTree
         NavMeshAgent agent;
         bool isWaiting = false;
         float stoppingDistance = 1.5f;
+        Animator anim;
 
-        public PatrolTask(Transform[] destinations, float waitTime, NavMeshAgent agent)
+        public PatrolTask(Transform[] destinations, float waitTime, NavMeshAgent agent,Animator anim)
         {
             this.destinations = destinations;
             this.waitTime = waitTime;
             this.agent = agent;
+            this.anim = anim;
         }
 
         public override NodeState Evaluate()
         {
             if (isWaiting)
             {
+                anim.SetBool("IsCrawling", false);
+                anim.SetBool("IsCrawlingFast", false);
+
                 elapsedTime += Time.deltaTime;
                 if (elapsedTime > waitTime)
                 {
+
                     isWaiting = false;
 
                 }
             }
             else
             {
+                anim.SetBool("IsCrawling", true);
                 if (Vector3.Distance(agent.transform.position, destinations[destinationIndex].position) < stoppingDistance)
                 {
                     destinationIndex = (destinationIndex + 1) % destinations.Length;
@@ -217,16 +224,20 @@ public class BehaviorTree
         Transform target;
         NavMeshAgent agent;
         float stoppingDistance = 1.5f;
+        Animator anim;
 
-        public GoToTargetPriority(Transform target, NavMeshAgent agent)
+        public GoToTargetPriority(Transform target, NavMeshAgent agent, Animator anim)
         {
             this.target = target;
             this.agent = agent;
+            this.anim = anim;
         }
 
         public override NodeState Evaluate()
         {
-            if(target == null) // le monstre est alle a la target
+            anim.SetBool("IsCrawling", true);
+            anim.SetBool("IsCrawlingFast", false);
+            if (target == null) // le monstre est alle a la target
             {
                 return NodeState.Failure;
             }
@@ -265,18 +276,22 @@ public class BehaviorTree
 
         Transform target;
         Transform self;
-        public IsInPOV(Transform target, Transform self, float height = 1, float angle = 30, float distance = 10)
+        Animator anim;
+        public IsInPOV(Transform target, Transform self,Animator anim, float height = 2, float angle = 30, float distance = 10)
         {
             this.height = height;
             this.angle = angle;
             this.distance = distance;
             this.target = target;
             this.self = self;
+            this.anim = anim;
 
         }
 
         public override NodeState Evaluate()
         {
+            anim.SetBool("IsCrawling", false);
+            anim.SetBool("IsCrawlingFast", false);
             Vector3 origine = self.position;
             Vector3 destination = target.position;
             Vector3 direction = destination - origine;
@@ -284,6 +299,7 @@ public class BehaviorTree
             if(direction.y < 0 || direction.y > height) // bonne hauteur
             {
                 //Debug.Log("hauteur");
+                anim.SetBool("IsCrawling", true);
                 return NodeState.Failure;
             }
 
@@ -293,7 +309,7 @@ public class BehaviorTree
             if (deltaAngle > angle) // dans l'angle
             {
                 //Debug.Log("angle");
-
+                anim.SetBool("IsCrawling", true);
                 return NodeState.Failure;
             }
 
@@ -303,16 +319,19 @@ public class BehaviorTree
 
             if (Physics.Raycast(origine, direction, out RaycastHit hit)) // regarde s'il peut le voir (obstacle)
             {
+                Debug.Log("hit");
+                Debug.Log(hit.collider.tag);
                 if (!target.CompareTag(hit.collider.tag))
                 {
                     //Debug.DrawRay(origine, direction, Color.cyan);
                     //Debug.Log(hit.collider.name);
-                    
+                    //Debug.Log("hit");
+                    anim.SetBool("IsCrawling", true);
                     return NodeState.Failure;
                 }
 
             }
-
+            anim.SetBool("IsCrawlingFast", true);
             return NodeState.Succes;
         }
     }

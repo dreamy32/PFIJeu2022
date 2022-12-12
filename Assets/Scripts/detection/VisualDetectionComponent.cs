@@ -7,7 +7,7 @@ public class VisualDetectionComponent : MonoBehaviour
 {
     [SerializeField] float distance = 10;
     [SerializeField] float angle = 30;
-    [SerializeField] float height = 1.0f;
+    [SerializeField] float height = 2.0f;
     [SerializeField] Color meshColor = Color.red;
     [SerializeField] List<GameObject> prey = new();
     [SerializeField] float waitTime = 2;
