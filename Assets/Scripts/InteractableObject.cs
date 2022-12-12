@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -69,6 +70,13 @@ public abstract class InteractableObject : MonoBehaviour
                 ToggleInfo(false);
             }
         };
+    }
+
+    protected void OnDisable()
+    {
+        _isTriggered = false;
+        _canInteract = false;
+        ToggleInfo(false);
     }
 
     protected virtual void Start()
