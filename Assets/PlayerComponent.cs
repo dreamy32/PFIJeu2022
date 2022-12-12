@@ -19,6 +19,8 @@ public class PlayerComponent : MonoBehaviour
         {
 
             flashlightIsOn = _flashlightComponent.ToggleFlashlight();
+            flashlightIsOn = true;
         }
+        flashlightIsOn = false;
     }
 }
