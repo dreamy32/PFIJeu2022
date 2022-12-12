@@ -119,7 +119,6 @@ public class LightComponent : MonoBehaviour
         _flickerRoutine = StartCoroutine(FlickerRoutine(flickTime, duration, endState));
     }
 
-
     private IEnumerator FlickerRoutine(float flickTime, float duration, bool? endState = null)
     {
         _stateBeforeFlicking = state;
