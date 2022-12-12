@@ -59,7 +59,8 @@ public class LightComponent : MonoBehaviour
         {
             if (!GameManager.GlobalPowerState)
             {
-        
+
+                Debug.Log("enter");
                 SanitySystem.inTheDark = false;
                 return;
             }
@@ -73,6 +74,7 @@ public class LightComponent : MonoBehaviour
         {
             if (!GameManager.GlobalPowerState)
             {
+                Debug.Log("stay");
                 SanitySystem.inTheDark = false;
                 return;
             }

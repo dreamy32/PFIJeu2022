@@ -8,6 +8,7 @@ TagManager:
   - Interactable
   - DarkArea
   - EndGame
+  - End
   layers:
   - Default
   - TransparentFX
