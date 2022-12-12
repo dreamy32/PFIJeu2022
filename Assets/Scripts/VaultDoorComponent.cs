@@ -10,7 +10,7 @@ public class VaultDoorComponent : InteractableObject
     {
         //InteractableObject attributes
         base.Awake();
-        SingleUsage = true; //Éviter de call l'animator pour rien
+        SingleUsage = false; //Éviter de call l'animator pour rien
         //
         _animator = GetComponent<Animator>();
     }

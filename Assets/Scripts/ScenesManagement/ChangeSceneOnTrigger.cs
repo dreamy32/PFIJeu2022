@@ -25,7 +25,7 @@ public class ChangeSceneOnTrigger : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "EndGame")
+        if (other.gameObject.tag == "End")
         {
             StartCoroutine(nameof(LoadScene));
         }
