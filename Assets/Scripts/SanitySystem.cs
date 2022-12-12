@@ -26,6 +26,8 @@ public class SanitySystem : MonoBehaviour
     [SerializeField] private Image saneImage;
     [SerializeField] private Image scaredImage;
     [SerializeField] private Image insaneImage;
+    [SerializeField] private MonsterBehaviourTreeComponent monster;
+    [SerializeField] private Transform player;
 
 
     private static float _currentSanity;
@@ -127,6 +129,7 @@ public class SanitySystem : MonoBehaviour
         }
         else
             stateImage.sprite = insaneImage.sprite;
+        monster.PriorityTarget(player);
 
         return PlayerSanity.Insane;
     }
