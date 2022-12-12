@@ -45,25 +45,25 @@ public class SanitySystem : MonoBehaviour
     #region Sanity
     private void ControlSanity()
     {
-        // Increase si le courant ainsi que la flashlight sont fermés
+        // Increase si le courant est fermé
         if (inTheDark)
             IncreaseSanity();
         else
             DecreaseSanity();
 
 
-        switch (sanityLevel)
-        {
-            case PlayerSanity.Sane:
-                //PlayRandomSound();
-                break;
-            case PlayerSanity.Scared:
+        //switch (sanityLevel)
+        //{
+        //    case PlayerSanity.Sane:
+        //        //PlayRandomSound();
+        //        break;
+        //    case PlayerSanity.Scared:
                
-                break;
-            case PlayerSanity.Insane:
+        //        break;
+        //    case PlayerSanity.Insane:
                 
-                break;
-        }
+        //        break;
+        //}
     }
     public static  void ResetSanity()
     {
