@@ -212,6 +212,50 @@ public class BehaviorTree
 
     }
 
+    public class GoToTargetPriority : Node
+    {
+        Transform target;
+        NavMeshAgent agent;
+        float stoppingDistance = 1.5f;
+
+        public GoToTargetPriority(Transform target, NavMeshAgent agent)
+        {
+            this.target = target;
+            this.agent = agent;
+        }
+
+        public override NodeState Evaluate()
+        {
+            if(target == null) // le monstre est alle a la target
+            {
+                return NodeState.Failure;
+            }
+            agent.destination = target.position;
+            if (agent.remainingDistance <= stoppingDistance)
+            {
+                State = NodeState.Succes;
+                target = null;
+                return State;
+            }
+            State = NodeState.Running;
+            return State;
+
+        }
+    }
+
+    public class placeHolder : Node
+    {
+        public placeHolder()
+        {
+
+        }
+
+        public override NodeState Evaluate()
+        {
+            return NodeState.Failure;
+        }
+    }
+
     public class IsInPOV : Node
     {
         //cone de detection
