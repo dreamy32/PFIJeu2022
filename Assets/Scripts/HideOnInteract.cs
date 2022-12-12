@@ -1,12 +1,14 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(HidingCam), typeof(AudioListener))]
 public class HideOnInteract : InteractableObject
 {
     [FormerlySerializedAs("_hidingCam")] [SerializeField] private Camera hidingCam;
     [SerializeField] private Canvas hideCanvas;
+    [SerializeField] private Image iconPlaceholder;
     //
     private AudioListener _audioListener;
     //
@@ -20,6 +22,9 @@ public class HideOnInteract : InteractableObject
 
     public void GetOut()
     {
+        var color = iconPlaceholder.color;
+        color.a = 255;
+        iconPlaceholder.color = color;
         hidingCam.enabled = false;
         hideCanvas.gameObject.SetActive(false);
         _camTransform.gameObject.SetActive(true);
@@ -29,8 +34,9 @@ public class HideOnInteract : InteractableObject
     {
         _camTransform = Camera.main.transform.root;
         //
-
-        
+        var color = iconPlaceholder.color;
+        color.a = 0;
+        iconPlaceholder.color = color;
         hidingCam.enabled = true;
         _camTransform.gameObject.SetActive(false);
         _audioListener.enabled = true;
