@@ -161,12 +161,15 @@ public abstract class InteractableObject : MonoBehaviour
         }
 
         //InfoIcon
-        if (infoIcon != null && InteractionManager.IconPlaceholder != null)
+        if (InteractionManager.IconPlaceholder != null)
         {
-            InteractionManager.IconPlaceholder.sprite = infoIcon;
-        }
+            if (infoIcon != null)
+            {
+                InteractionManager.IconPlaceholder.sprite = infoIcon;
+            }
 
-        InteractionManager.IconPlaceholder.enabled = state && infoIcon != null;
+            InteractionManager.IconPlaceholder.enabled = state && infoIcon != null;
+        }
     }
 
     protected abstract void OnInteract();
