@@ -26,7 +26,7 @@ public class SanitySystem : MonoBehaviour
     PlayerSanity sanityLevel;
     
 
-    private bool inTheDark = true;
+    public static bool inTheDark = true;
     private bool isHiding = false;
 
 
@@ -35,21 +35,20 @@ public class SanitySystem : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         staticSanityBar = sanityBar;
     }
-    public void InTheDark(bool value)
-    {
-        inTheDark = value;
-    }
     private void OnDestroy()
     {
         currentSanity = 0;
         staticSanityBar = null;
+        inTheDark = true;
     }
 
     #region Sanity
     private void ControlSanity()
     {
         // Increase si le courant ainsi que la flashlight sont fermés
-        if (!GameManager.GlobalPowerState)
+        //if (!GameManager.GlobalPowerState)
+        //    IncreaseSanity();
+        if (inTheDark)
             IncreaseSanity();
         else
             DecreaseSanity();

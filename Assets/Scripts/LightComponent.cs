@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
+[RequireComponent(typeof(BoxCollider))]
 public class LightComponent : MonoBehaviour
 {
     [Header("The object looks for the 'Lights' in his children.")]
     [SerializeField, Tooltip("If checked, lights will be turned on Awake.")]
     private bool state = true;
+    [SerializeField]  LayerMask triggeringMask;
 
     [Header("Materials")]
     //
@@ -36,7 +38,10 @@ public class LightComponent : MonoBehaviour
         if (flickOnAwake)
             Flick(time, flickDuration);
     }
-
+    private void Reset()
+    {
+        GetComponent<BoxCollider>().isTrigger = true;
+    }
     private void Start()
     {
         if (toggleOnStart)
@@ -46,6 +51,40 @@ public class LightComponent : MonoBehaviour
     private void OnDestroy()
     {
         instances = null;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+
+        if (GameTools.CompareLayers(triggeringMask, other.gameObject.layer))
+        {
+            if (!GameManager.GlobalPowerState)
+            {
+        
+                SanitySystem.inTheDark = false;
+                return;
+            }
+            SanitySystem.inTheDark = state;
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+
+        if (GameTools.CompareLayers(triggeringMask, other.gameObject.layer))
+        {
+            if (!GameManager.GlobalPowerState)
+            {
+                SanitySystem.inTheDark = false;
+                return;
+            }
+            SanitySystem.inTheDark = state;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (GameTools.CompareLayers(triggeringMask, other.gameObject.layer))
+        {
+            SanitySystem.inTheDark = false;
+        }
     }
 
     public bool GetState() => state;
