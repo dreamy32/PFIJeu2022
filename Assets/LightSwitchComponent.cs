@@ -56,6 +56,7 @@ public class LightSwitchComponent : InteractableObject
         base.Reset();
         GetComponent<AudioSource>().playOnAwake = false;
         turnOnSound = AssetDatabase.LoadAssetAtPath<AudioClip>("Assets/Audio/LightSwitch/lightswitch-on.ogg");
+        turnOffSound = AssetDatabase.LoadAssetAtPath<AudioClip>("Assets/Audio/LightSwitch/lightswitch-off.ogg");
 
     }
     protected override void OnInteract()
