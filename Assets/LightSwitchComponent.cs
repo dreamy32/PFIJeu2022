@@ -45,20 +45,6 @@ public class LightSwitchComponent : InteractableObject
         instances = null;
     }
 
-    protected override void OnTriggerEnter(Collider c)
-    {
-        base.OnTriggerEnter(c);
-        if (c.CompareTag("Enemy"))
-        {
-            /*
-             * if(getcomponent<enemy>.wantsToOpenDoor && the door is not already open){
-             *getcomponent<enemy>.doorReference = this;
-             * OnInteract();
-             * }
-             */
-        }
-    }
-
     protected override void OnInteract()
     {
         _animator.SetBool(IsOn, !switchState);
