@@ -10,7 +10,7 @@ public class LightComponent : MonoBehaviour
 {
     [Header("The object looks for the 'Lights' in his children.")]
     [SerializeField, Tooltip("If checked, lights will be turned on Awake.")]
-    private bool state = true;
+    private bool state;
     [SerializeField]  LayerMask triggeringMask;
 
     [Header("Materials")]
@@ -25,7 +25,6 @@ public class LightComponent : MonoBehaviour
     private Light[] _lights;
     private Renderer[] _renderers;
     private static List<LightComponent> instances;
-    public bool toggleOnStart;
 
     private void Awake()
     {
@@ -38,6 +37,7 @@ public class LightComponent : MonoBehaviour
         //
         if (flickOnAwake)
             Flick(time, flickDuration);
+        Toggle(state);
     }
     private void Reset()
     {
@@ -49,11 +49,6 @@ public class LightComponent : MonoBehaviour
         materialOff =
             AssetDatabase.LoadAssetAtPath<Material>(
                 "Assets/Resources/Dnk_Dev/HospitalHorrorPack/Models/Materials/Mat_Lamp_Off.mat");
-    }
-    private void Start()
-    {
-        if (toggleOnStart)
-            Toggle(state);
     }
 
     private void OnDestroy()
@@ -96,7 +91,6 @@ public class LightComponent : MonoBehaviour
                 $"Can't pursue action because there is no power. Try affecting the state to {nameof(GameManager.GlobalPowerState)} instead or set {nameof(ignoreGlobalPstate)} to true.");
             return;
         }
-
         this.state = state;
         //Jouer un son ?
         for (var i = 0; i < _lights.Length; i++)

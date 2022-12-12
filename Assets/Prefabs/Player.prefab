@@ -138,9 +138,6 @@ MonoBehaviour:
   walkSpeed: 3
   sprintSpeed: 6
   gravity: -9.81
-  jumpForce: 10
-  soundManager: {fileID: 0}
-  footsteps: {fileID: 0}
   crouchingHeight: 0.5
   topRaycastLocation: {fileID: 0}
 --- !u!114 &847703704985079277
@@ -710,12 +707,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 1
+  triggeringMask:
+    serializedVersion: 2
+    m_Bits: 0
   materialOn: {fileID: 0}
   materialOff: {fileID: 0}
   flickOnAwake: 0
   time: 0
   flickDuration: 0
-  toggleOnStart: 1
 --- !u!114 &5032696051497105697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -728,8 +727,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fb6ee9c79dd1f1418268f2f73a6d40d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnOnSound: {fileID: 0}
-  turnOffSound: {fileID: 0}
+  turnOnSound: {fileID: 8300000, guid: 3240f7110a02f954c9eb8b83c0c94ebe, type: 3}
+  turnOffSound: {fileID: 8300000, guid: 69d07c9d4655ccd478aae54715004891, type: 3}
 --- !u!114 &6063520685316424129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -748,6 +747,19 @@ MonoBehaviour:
   rotationAmount: 4
   maxRotationAmount: 5
   smoothRotation: 12
+--- !u!65 &2204461783293186733
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3822925513730943223}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &3827694925652965999 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4777606630871252, guid: d86ca2f4159e6a942abd8dfc52b38395, type: 3}

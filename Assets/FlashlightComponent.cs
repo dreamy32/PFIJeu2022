@@ -15,7 +15,6 @@ public class FlashlightComponent : MonoBehaviour
         _lightComponent = GetComponent<LightComponent>();
         _audioSource = GetComponent<AudioSource>();
         //
-        _lightComponent.toggleOnStart = false;
     }
     
     public bool ToggleFlashlight()
@@ -23,7 +22,7 @@ public class FlashlightComponent : MonoBehaviour
         _state = _lightComponent.GetState();
         _lightComponent.Toggle(!_state, true);
         //
-        _audioSource.clip = _state ? turnOnSound : turnOffSound;
+        _audioSource.clip = !_state ? turnOnSound : turnOffSound;
         _audioSource.Play();
         //
         return _state;

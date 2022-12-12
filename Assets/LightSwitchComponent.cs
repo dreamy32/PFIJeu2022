@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator), typeof(AudioSource), typeof(Outline))]
@@ -17,8 +18,11 @@ public class LightSwitchComponent : InteractableObject
     private AudioSource _audioSource;
 
     private static readonly int IsOn = Animator.StringToHash("isOn");
+    private static readonly int OnAwakeTrigger = Animator.StringToHash("OnAwake");
 
-    public bool switchState;
+    [HideInInspector] public bool switchState;
+
+    private bool _onAwake = true;
     private static List<LightSwitchComponent> instances;
 
     protected override void Awake()
@@ -32,6 +36,13 @@ public class LightSwitchComponent : InteractableObject
         _audioSource = GetComponent<AudioSource>();
         //
         switchState = lightComponent.GetState();
+        //Set the state of the switch by the animator on Awake
+        _animator.SetTrigger(OnAwakeTrigger);
+    }
+
+    protected override void Start()
+    {
+        base.Start();
         _animator.SetBool(IsOn, switchState);
     }
 
@@ -40,6 +51,14 @@ public class LightSwitchComponent : InteractableObject
         instances = null;
     }
 
+    protected override void Reset()
+    {
+        base.Reset();
+        GetComponent<AudioSource>().playOnAwake = false;
+        turnOnSound = AssetDatabase.LoadAssetAtPath<AudioClip>("Assets/Audio/LightSwitch/lightswitch-on.ogg");
+        turnOffSound = AssetDatabase.LoadAssetAtPath<AudioClip>("Assets/Audio/LightSwitch/lightswitch-off.ogg");
+
+    }
     protected override void OnInteract()
     {
         _animator.SetBool(IsOn, !switchState);
@@ -50,6 +69,13 @@ public class LightSwitchComponent : InteractableObject
         switchState = true;
         _audioSource.clip = turnOnSound;
         lightComponent.Toggle(switchState);
+        //
+        if (_onAwake)
+        {
+            _onAwake = false;
+            _animator.ResetTrigger(OnAwakeTrigger);
+            return;
+        }
         _audioSource.Play();
     }
 
@@ -58,6 +84,13 @@ public class LightSwitchComponent : InteractableObject
         switchState = false;
         _audioSource.clip = turnOffSound;
         lightComponent.Toggle(switchState);
+        //
+        if (_onAwake)
+        {
+            _onAwake = false;
+            _animator.ResetTrigger(OnAwakeTrigger);
+            return;
+        }
         _audioSource.Play();
     }
 
