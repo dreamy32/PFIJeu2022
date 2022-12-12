@@ -1,7 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [RequireComponent(typeof(Animator), typeof(AudioSource), typeof(Outline))]
 public class LightSwitchComponent : InteractableObject
@@ -38,6 +38,25 @@ public class LightSwitchComponent : InteractableObject
         //
         switchState = lightComponent.GetState();
         _animator.SetBool(IsOn, switchState);
+    }
+
+    private void OnDestroy()
+    {
+        instances = null;
+    }
+
+    protected override void OnTriggerEnter(Collider c)
+    {
+        base.OnTriggerEnter(c);
+        if (c.CompareTag("Enemy"))
+        {
+            /*
+             * if(getcomponent<enemy>.wantsToOpenDoor && the door is not already open){
+             *getcomponent<enemy>.doorReference = this;
+             * OnInteract();
+             * }
+             */
+        }
     }
 
     protected override void OnInteract()

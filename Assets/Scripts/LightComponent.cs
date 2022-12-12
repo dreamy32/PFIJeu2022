@@ -43,6 +43,11 @@ public class LightComponent : MonoBehaviour
             Toggle(state);
     }
 
+    private void OnDestroy()
+    {
+        instances = null;
+    }
+
     public bool GetState() => state;
 
     /// <summary>
