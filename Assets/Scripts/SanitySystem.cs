@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -40,6 +41,7 @@ public class SanitySystem : MonoBehaviour
     {
         _audioSource = GetComponent<AudioSource>();
         _staticSanityBar = sanityBar;
+        StartCoroutine(nameof(PlayRandomSound));
     }
 
     private void OnDestroy()
@@ -48,7 +50,11 @@ public class SanitySystem : MonoBehaviour
         _staticSanityBar = null;
         InTheDark = true;
     }
-
+    private void Update()
+    {
+        _sanityLevel = GetPlayerSanity();
+        ControlSanity();
+    }
     #region Sanity
 
     private void ControlSanity()
@@ -105,14 +111,7 @@ public class SanitySystem : MonoBehaviour
     }
 
     #endregion
-
-
-    private void Update()
-    {
-        _sanityLevel = GetPlayerSanity();
-        ControlSanity();
-    }
-
+    
     private PlayerSanity GetPlayerSanity()
     {
         if (_currentSanity <= 0.5f)
@@ -141,11 +140,11 @@ public class SanitySystem : MonoBehaviour
             {
                 IncreaseSanity(true);
 
-                if (!audioSource.isPlaying)
+                if (!_audioSource.isPlaying)
                 {
                     int rand = Random.Range(0, scarySounds.Length);
-                    audioSource.clip = scarySounds[rand];
-                    audioSource.Play();
+                    _audioSource.clip = scarySounds[rand];
+                    _audioSource.Play();
                 }
             }
             yield return new WaitForSeconds(45);
